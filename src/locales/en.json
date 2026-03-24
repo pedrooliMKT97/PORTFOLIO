@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "design": "Design",
+    "identity": "Identity",
+    "video": "Video",
+    "web": "Web",
+    "process": "Process",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "Design that transforms perception into value",
+    "subheadline": "I create visual experiences that position brands and increase conversion",
+    "cta_primary": "View Portfolio",
+    "cta_secondary": "Get in Touch",
+    "scroll": "Scroll to discover",
+    "proof_experience": "+5 years of experience",
+    "proof_projects": "+100 projects delivered",
+    "proof_location": "Available Worldwide"
+  },
+  "services": {
+    "title": "Specialties",
+    "subtitle": "Complete solutions to elevate your brand's level.",
+    "design_title": "Graphic Design",
+    "design_desc": "Strategic visual pieces for social media and campaigns.",
+    "design_benefit": "Increases engagement and perceived value.",
+    "identity_title": "Visual Identity",
+    "identity_desc": "Creation of memorable and consistent brands.",
+    "identity_benefit": "Positions your company as an authority in the market.",
+    "video_title": "Video Editing",
+    "video_desc": "Dynamic videos for Reels, TikTok, and YouTube.",
+    "video_benefit": "Retains attention and generates more conversions.",
+    "web_title": "Website Creation",
+    "web_desc": "High-performance landing pages and institutional sites.",
+    "web_benefit": "Transforms visitors into real clients.",
+    "cta": "Request a quote"
+  },
+  "process": {
+    "title": "How I work",
+    "subtitle": "A clear and efficient process to ensure the best results.",
+    "step1_title": "Briefing",
+    "step1_desc": "Deep understanding of your business, audience, and goals.",
+    "step2_title": "Strategy",
+    "step2_desc": "Visual planning and definition of the creative direction.",
+    "step3_title": "Execution",
+    "step3_desc": "Creation of materials focused on aesthetics and conversion.",
+    "step4_title": "Delivery",
+    "step4_desc": "Presentation, final adjustments, and file delivery."
+  },
+  "design": {
+    "title": "Graphic Design",
+    "subtitle": "High-impact visual pieces focused on conversion and aesthetics.",
+    "behance": "See more on Behance"
+  },
+  "identity": {
+    "title": "Visual Identity",
+    "subtitle": "Memorable brands that connect and convey authority.",
+    "view_case": "View Full Case"
+  },
+  "video": {
+    "title": "Video Editing",
+    "subtitle": "Dynamic and cinematic narratives for maximum retention."
+  },
+  "web": {
+    "title": "Landing Pages & Sites",
+    "subtitle": "Immersive and high-performance digital experiences."
+  },
+  "about": {
+    "title": "About Me",
+    "description1": "I'm a Brazilian graphic designer with over 5 years of experience, specialized in creating visuals that not only impress but also convert.",
+    "description2": "My multidisciplinary approach combines refined aesthetics, brand strategy, and technology to deliver exceptional results.",
+    "tools": "Tools & Skills",
+    "experience": "Years of Experience",
+    "projects": "Projects Delivered"
+  },
+  "contact": {
+    "title": "Is your current design driving clients away?",
+    "subtitle": "Let's create something that actually sells. Get in touch directly via WhatsApp to discuss your next project.",
+    "whatsapp": "Chat on WhatsApp",
+    "instagram": "Follow on Instagram",
+    "name": "Your Name",
+    "message": "Message / Project",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Redirecting to WhatsApp...",
+    "required": "Required field",
+    "placeholder": "Briefly describe your project..."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

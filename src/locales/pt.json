@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "home": "Início",
+    "services": "Serviços",
+    "design": "Design",
+    "identity": "Identidade",
+    "video": "Vídeo",
+    "web": "Web",
+    "process": "Processo",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "hero": {
+    "headline": "Design que transforma percepção em valor",
+    "subheadline": "Crio experiências visuais que posicionam marcas e aumentam conversão",
+    "cta_primary": "Ver Portfólio",
+    "cta_secondary": "Entrar em contato",
+    "scroll": "Role para descobrir",
+    "proof_experience": "+5 anos de experiência",
+    "proof_projects": "+100 projetos realizados",
+    "proof_location": "Atendimento Brasil"
+  },
+  "services": {
+    "title": "Especialidades",
+    "subtitle": "Soluções completas para elevar o nível da sua marca.",
+    "design_title": "Design Gráfico",
+    "design_desc": "Peças visuais estratégicas para redes sociais e campanhas.",
+    "design_benefit": "Aumenta o engajamento e a percepção de valor.",
+    "identity_title": "Identidade Visual",
+    "identity_desc": "Criação de marcas memoráveis e consistentes.",
+    "identity_benefit": "Posiciona sua empresa como autoridade no mercado.",
+    "video_title": "Edição de Vídeo",
+    "video_desc": "Vídeos dinâmicos para Reels, TikTok e YouTube.",
+    "video_benefit": "Retém a atenção e gera mais conversões.",
+    "web_title": "Criação de Sites",
+    "web_desc": "Landing pages e sites institucionais de alta performance.",
+    "web_benefit": "Transforma visitantes em clientes reais.",
+    "cta": "Solicitar orçamento"
+  },
+  "process": {
+    "title": "Como eu trabalho",
+    "subtitle": "Um processo claro e eficiente para garantir os melhores resultados.",
+    "step1_title": "Briefing",
+    "step1_desc": "Entendimento profundo do seu negócio, público e objetivos.",
+    "step2_title": "Estratégia",
+    "step2_desc": "Planejamento visual e definição da direção criativa.",
+    "step3_title": "Execução",
+    "step3_desc": "Criação dos materiais com foco em estética e conversão.",
+    "step4_title": "Entrega",
+    "step4_desc": "Apresentação, ajustes finais e entrega dos arquivos."
+  },
+  "design": {
+    "title": "Design Gráfico",
+    "subtitle": "Peças de alto impacto visual focadas em conversão e estética.",
+    "behance": "Ver mais no Behance"
+  },
+  "identity": {
+    "title": "Identidade Visual",
+    "subtitle": "Marcas memoráveis que conectam e transmitem autoridade.",
+    "view_case": "Ver Case Completo"
+  },
+  "video": {
+    "title": "Edição de Vídeo",
+    "subtitle": "Narrativas dinâmicas e cinematográficas para retenção máxima."
+  },
+  "web": {
+    "title": "Landing Pages & Sites",
+    "subtitle": "Experiências digitais imersivas e de alta performance."
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "description1": "Sou um designer gráfico brasileiro com mais de 5 anos de experiência, especializado em criar visuais que não apenas impressionam, mas também convertem.",
+    "description2": "Minha abordagem multidisciplinar une estética apurada, estratégia de marca e tecnologia para entregar resultados excepcionais.",
+    "tools": "Ferramentas & Skills",
+    "experience": "Anos de Experiência",
+    "projects": "Projetos Entregues"
+  },
+  "contact": {
+    "title": "Seu design atual está afastando clientes?",
+    "subtitle": "Vamos criar algo que realmente venda. Entre em contato diretamente pelo WhatsApp para discutirmos seu próximo projeto.",
+    "whatsapp": "Falar no WhatsApp",
+    "instagram": "Seguir no Instagram",
+    "name": "Seu Nome",
+    "message": "Mensagem / Projeto",
+    "send": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "success": "Redirecionando para o WhatsApp...",
+    "required": "Campo obrigatório",
+    "placeholder": "Descreva seu projeto brevemente..."
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  }
+}
