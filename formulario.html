@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Briefing Identidade Visual | Premium Experience</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&family=Montserrat:wght@400;800&family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* * DESIGN SYSTEM & CONFIGURATION
+         * Theme: Ultra Premium Modern Black Glass
+         */
+        :root {
+            --bg-primary: #060606;
+            --bg-secondary: #0f0f0f;
+            --accent: #ff6a00;
+            --accent-soft: #ff8c3a;
+            --accent-glow: rgba(255, 106, 0, 0.4);
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+            --glass-surface: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: 24px;
+            --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            box-sizing: border-box;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- IMMERSIVE BACKGROUND --- */
+        .ambient-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% -20%, #1a1a1a, #060606);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -20%; left: -10%; animation-delay: 0s; }
+        .orb-2 { width: 500px; height: 500px; background: #5a1e00; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 300px; height: 300px; background: var(--accent-soft); top: 40%; left: 40%; opacity: 0.15; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.1); }
+        }
+
+        .noise-texture {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .app-shell {
+            width: 100%;
+            max-width: 850px;
+            min-height: 90vh;
+            margin: 20px;
+            background: var(--glass-surface);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: height 0.5s var(--transition-smooth);
+        }
+
+        /* --- HEADER --- */
+        .app-header {
+            padding: 40px 50px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeDown 0.8s forwards 0.2s;
+        }
+
+        .page-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: fadeRight 0.8s forwards 0.4s;
+        }
+
+        /* Progress Bar */
+        .progress-track {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            box-shadow: 0 0 20px var(--accent);
+            transition: width 0.8s var(--transition-smooth);
+        }
+
+        /* --- CONTENT AREA --- */
+        .form-viewport {
+            flex: 1;
+            padding: 40px 50px;
+            position: relative;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--glass-border) transparent;
+        }
+        
+        .form-viewport::-webkit-scrollbar { width: 6px; }
+        .form-viewport::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        /* Steps Animation */
+        .step-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s var(--transition-smooth);
+        }
+
+        .step-panel.active {
+            display: block;
+            animation: slideUpReveal 0.6s var(--transition-smooth) forwards;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- FORM CONTROLS --- */
+        .input-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .field-wrap {
+            position: relative;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255, 106, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Selector Chips */
+        .chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s var(--ease-elastic);
+            user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chip:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .chip.selected {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+            font-weight: 600;
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+
+        /* Visual Cards (Typography) */
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .visual-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .visual-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .visual-card.selected {
+            background: rgba(255, 106, 0, 0.08);
+            border-color: var(--accent);
+            box-shadow: inset 0 0 0 1px var(--accent);
+        }
+
+        .font-preview {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .font-name {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER & NAV --- */
+        .app-footer {
+            padding: 30px 50px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-muted);
+        }
+        .btn-ghost:hover { color: #fff; background: rgba(255,255,255,0.05); }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 106, 0, 0.4);
+        }
+        .btn-primary:hover::after { opacity: 1; }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        /* --- DASHBOARD --- */
+        .dashboard-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .review-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 3px solid var(--glass-border);
+            transition: 0.3s;
+        }
+        
+        .review-card:hover { border-left-color: var(--accent); background: rgba(0,0,0,0.5); }
+
+        .review-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; letter-spacing: 1px; }
+        .review-value { font-size: 1rem; color: #e0e0e0; line-height: 1.5; white-space: pre-wrap; }
+
+        /* Animations Keyframes */
+        @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeRight { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideUpReveal { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-shell { margin: 0; min-height: 100vh; border-radius: 0; border: none; }
+            .app-header { padding: 30px 25px; }
+            .form-viewport { padding: 20px 25px; }
+            .app-footer { padding: 20px 25px; flex-direction: column-reverse; gap: 15px; }
+            .btn { width: 100%; justify-content: center; }
+            .page-title { font-size: 2rem; }
+            .visual-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-canvas">
+        <div class="noise-texture"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <main class="app-shell" id="appShell">
+        
+        <header class="app-header">
+            <span class="brand-tag">Project Briefing</span>
+            <h1 class="page-title" id="pageTitle">Identidade Visual</h1>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </header>
+
+        <div class="form-viewport" id="formContainer">
+
+            <div class="step-panel active" data-step="1">
+                <h2 class="section-title">Vamos começar</h2>
+                <p class="section-desc">Dados essenciais para iniciarmos o projeto.</p>
+                
+                <div class="input-group">
+                    <label>Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Seu nome" required>
+                </div>
+                <div class="input-group">
+                    <label>Nome do Negócio</label>
+                    <input type="text" id="negocio" placeholder="Nome da marca ou empresa" required>
+                </div>
+                <div class="input-group">
+                    <label>Data de Início</label>
+                    <input type="date" id="data">
+                </div>
+                <div class="input-group">
+                    <label>Email Corporativo</label>
+                    <input type="email" id="email" placeholder="contato@empresa.com" required>
+                </div>
+                <div class="input-group">
+                    <label>WhatsApp</label>
+                    <input type="tel" id="whatsapp" placeholder="(00) 00000-0000">
+                </div>
+                <div class="input-group">
+                    <label>Cidade / Estado</label>
+                    <input type="text" id="local" placeholder="Ex: São Paulo, SP">
+                </div>
+                <div class="input-group">
+                    <label>Site ou Redes Sociais</label>
+                    <input type="url" id="social" placeholder="https://">
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="2">
+                <h2 class="section-title">Sobre a Empresa</h2>
+                <p class="section-desc">A essência e o propósito da marca.</p>
+
+                <div class="input-group">
+                    <label>Descreva o Negócio</label>
+                    <textarea id="descricao" placeholder="O que sua empresa faz e vende?" rows="3" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Missão e Propósito</label>
+                    <textarea id="missao" placeholder="Por que a empresa existe? Qual o impacto?" rows="3"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Público-alvo</label>
+                    <textarea id="publico" placeholder="Quem compra de você? (Idade, interesses, estilo)" rows="3"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Principais Concorrentes</label>
+                    <textarea id="concorrentes" placeholder="Quem são seus concorrentes diretos?" rows="2"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Diferenciais</label>
+                    <textarea id="diferenciais" placeholder="O que te faz único no mercado?" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="3">
+                <h2 class="section-title">Direção Visual</h2>
+                <p class="section-desc">Definindo os pilares estéticos.</p>
+
+                <div class="input-group">
+                    <label>Já possui Logo?</label>
+                    <div class="chip-grid single-select" data-target="tem_logo">
+                        <div class="chip" data-value="Sim">Sim, quero renovar</div>
+                        <div class="chip" data-value="Não">Não, criar do zero</div>
+                    </div>
+                    <input type="hidden" id="tem_logo">
+                </div>
+
+                <div class="input-group">
+                    <label>Cores Desejadas</label>
+                    <input type="text" id="cores_sim" placeholder="Ex: Dourado e Preto">
+                </div>
+
+                <div class="input-group">
+                    <label>Cores a Evitar</label>
+                    <input type="text" id="cores_nao" placeholder="Ex: Rosa, Vermelho">
+                </div>
+
+                <div class="input-group">
+                    <label>Estilo Visual</label>
+                    <div class="chip-grid multi-select" data-target="estilos">
+                        <div class="chip" data-value="Minimalista">Minimalista</div>
+                        <div class="chip" data-value="Luxuoso">Luxuoso</div>
+                        <div class="chip" data-value="Corporativo">Corporativo</div>
+                        <div class="chip" data-value="Criativo">Criativo</div>
+                        <div class="chip" data-value="Jovem">Jovem</div>
+                        <div class="chip" data-value="Tecnológico">Tecnológico</div>
+                        <div class="chip" data-value="Elegante">Elegante</div>
+                        <div class="chip" data-value="Divertido">Divertido</div>
+                    </div>
+                    <input type="hidden" id="estilos">
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="4">
+                <h2 class="section-title">Tipografia</h2>
+                <p class="section-desc">Escolha os estilos de fonte que mais agradam.</p>
+
+                <div class="visual-grid multi-select-card" data-target="tipografia">
+                    <div class="visual-card" data-value="Sans Serif">
+                        <div class="font-preview" style="font-family: 'Inter', sans-serif;">Aa</div>
+                        <div class="font-name">Sans Serif (Limpa)</div>
+                    </div>
+                    <div class="visual-card" data-value="Serif">
+                        <div class="font-preview" style="font-family: 'Playfair Display', serif;">Aa</div>
+                        <div class="font-name">Serif (Clássica)</div>
+                    </div>
+                    <div class="visual-card" data-value="Cursiva">
+                        <div class="font-preview" style="font-family: 'Dancing Script', cursive;">Aa</div>
+                        <div class="font-name">Cursiva (Script)</div>
+                    </div>
+                    <div class="visual-card" data-value="Display">
+                        <div class="font-preview" style="font-family: 'Montserrat', sans-serif; font-weight: 800;">Aa</div>
+                        <div class="font-name">Display (Bold)</div>
+                    </div>
+                </div>
+                <input type="hidden" id="tipografia">
+                
+                <div class="input-group" style="margin-top: 30px;">
+                    <label>Observações Tipográficas</label>
+                    <textarea id="obs_fontes" placeholder="Alguma preferência específica sobre as letras?"></textarea>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="5">
+                <h2 class="section-title">Referências</h2>
+                <p class="section-desc">O que inspira o projeto visualmente.</p>
+
+                <div class="input-group">
+                    <label>Marcas que Gosta</label>
+                    <textarea id="ref_gosta" placeholder="Cite marcas referência e o porquê."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Marcas que NÃO Gosta</label>
+                    <textarea id="ref_nao_gosta" placeholder="O que devemos evitar?"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Links de Inspiração</label>
+                    <textarea id="ref_links" placeholder="Pinterest, Instagram, Behance..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Upload Visual (Opcional)</label>
+                    <input type="file" id="upload_fake" style="padding: 12px;">
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">*Envie os arquivos reais diretamente no WhatsApp.</p>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="6">
+                <h2 class="section-title">Aplicações</h2>
+                <p class="section-desc">Onde a marca ganhará vida.</p>
+
+                <div class="input-group">
+                    <label>Pontos de Contato</label>
+                    <div class="chip-grid multi-select" data-target="aplicacoes">
+                        <div class="chip" data-value="Instagram">Instagram</div>
+                        <div class="chip" data-value="Site/Web">Site/Web</div>
+                        <div class="chip" data-value="Embalagens">Embalagens</div>
+                        <div class="chip" data-value="Cartões">Papelaria</div>
+                        <div class="chip" data-value="Fachada">Fachada</div>
+                        <div class="chip" data-value="Uniformes">Uniformes</div>
+                        <div class="chip" data-value="Ads">Anúncios</div>
+                        <div class="chip" data-value="Brindes">Brindes</div>
+                    </div>
+                    <input type="hidden" id="aplicacoes">
+                </div>
+                <div class="input-group">
+                    <label>Outras Aplicações</label>
+                    <textarea id="outras_apps" placeholder="Algum item específico não listado?"></textarea>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="7">
+                <h2 class="section-title">Sensações</h2>
+                <p class="section-desc">O sentimento que a marca deve transmitir.</p>
+
+                <div class="input-group">
+                    <div class="chip-grid multi-select" data-target="sensacoes">
+                        <div class="chip" data-value="Confiança">Confiança</div>
+                        <div class="chip" data-value="Exclusividade">Exclusividade</div>
+                        <div class="chip" data-value="Modernidade">Modernidade</div>
+                        <div class="chip" data-value="Sofisticação">Sofisticação</div>
+                        <div class="chip" data-value="Energia">Energia</div>
+                        <div class="chip" data-value="Tecnologia">Tecnologia</div>
+                        <div class="chip" data-value="Proximidade">Proximidade</div>
+                        <div class="chip" data-value="Autoridade">Autoridade</div>
+                    </div>
+                    <input type="hidden" id="sensacoes">
+                </div>
+                <div class="input-group">
+                    <label>Sensações Adicionais</label>
+                    <textarea id="obs_sensacoes" placeholder="Mais algum adjetivo importante?"></textarea>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="8">
+                <h2 class="section-title">Finalização</h2>
+                <p class="section-desc">Alinhamento de expectativas.</p>
+
+                <div class="input-group">
+                    <label>Prazo Desejado</label>
+                    <input type="text" id="prazo" placeholder="Ex: Para o próximo mês">
+                </div>
+                <div class="input-group">
+                    <label>Orçamento Estimado</label>
+                    <input type="text" id="orcamento" placeholder="Ex: Entre X e Y">
+                </div>
+                <div class="input-group">
+                    <label>Observações Finais</label>
+                    <textarea id="obs_finais" placeholder="Espaço livre para qualquer comentário extra."></textarea>
+                </div>
+            </div>
+
+            <div class="step-panel" data-step="9">
+                <h2 class="section-title">Revisão do Briefing</h2>
+                <p class="section-desc">Confira se está tudo correto antes de enviar.</p>
+                <div id="dashboardContent" class="dashboard-grid">
+                    </div>
+            </div>
+
+        </div>
+
+        <footer class="app-footer">
+            <button class="btn btn-ghost" id="prevBtn" style="visibility: hidden;">
+                ← Voltar
+            </button>
+            <button class="btn btn-primary" id="nextBtn">
+                Continuar
+            </button>
+        </footer>
+
+    </main>
+
+    <script>
+        /**
+         * BRIEFING SYSTEM LOGIC
+         * Handles state, validation, storage, and WhatsApp integration.
+         */
+        class BriefingApp {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 9;
+                this.data = {};
+                
+                this.elements = {
+                    prevBtn: document.getElementById('prevBtn'),
+                    nextBtn: document.getElementById('nextBtn'),
+                    progressBar: document.getElementById('progressBar'),
+                    steps: document.querySelectorAll('.step-panel'),
+                    dashboard: document.getElementById('dashboardContent'),
+                    pageTitle: document.getElementById('pageTitle'),
+                    inputs: document.querySelectorAll('input, textarea')
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.loadData();
+                this.setupEvents();
+                this.updateUI();
+            }
+
+            setupEvents() {
+                // Navigation
+                this.elements.nextBtn.addEventListener('click', () => this.nextStep());
+                this.elements.prevBtn.addEventListener('click', () => this.prevStep());
+
+                // Autosave
+                this.elements.inputs.forEach(input => {
+                    input.addEventListener('input', () => this.saveInput(input));
+                    input.addEventListener('change', () => this.saveInput(input));
+                });
+
+                // Chips (Selection)
+                document.querySelectorAll('.chip-grid').forEach(grid => {
+                    grid.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('chip')) this.handleSelection(e.target, grid);
+                    });
+                });
+
+                // Visual Cards
+                document.querySelectorAll('.visual-grid').forEach(grid => {
+                    grid.addEventListener('click', (e) => {
+                        const card = e.target.closest('.visual-card');
+                        if (card) this.handleCardSelection(card, grid);
+                    });
+                });
+            }
+
+            handleSelection(chip, grid) {
+                const isMulti = grid.classList.contains('multi-select');
+                const targetId = grid.dataset.target;
+
+                if (isMulti) {
+                    chip.classList.toggle('selected');
+                } else {
+                    grid.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+                    chip.classList.add('selected');
+                }
+                this.saveSelection(grid, targetId);
+            }
+
+            handleCardSelection(card, grid) {
+                card.classList.toggle('selected');
+                this.saveSelection(grid, grid.dataset.target);
+            }
+
+            saveSelection(grid, targetId) {
+                const selected = Array.from(grid.querySelectorAll('.selected')).map(el => el.dataset.value);
+                const input = document.getElementById(targetId);
+                if (input) {
+                    input.value = JSON.stringify(selected);
+                    this.data[targetId] = selected;
+                    this.persist();
+                }
+            }
+
+            saveInput(input) {
+                this.data[input.id] = input.value;
+                this.persist();
+            }
+
+            persist() {
+                localStorage.setItem('briefing_data_v2', JSON.stringify(this.data));
+            }
+
+            loadData() {
+                const stored = localStorage.getItem('briefing_data_v2');
+                if (stored) {
+                    this.data = JSON.parse(stored);
+                    
+                    // Restore Inputs
+                    Object.keys(this.data).forEach(key => {
+                        const el = document.getElementById(key);
+                        if (el) {
+                            if (el.type !== 'hidden') el.value = this.data[key];
+                        }
+                    });
+
+                    // Restore Selections
+                    ['tem_logo', 'estilos', 'tipografia', 'aplicacoes', 'sensacoes'].forEach(key => {
+                        if (this.data[key]) {
+                            const val = this.data[key];
+                            const container = document.querySelector(`[data-target="${key}"]`);
+                            if (container) {
+                                const values = Array.isArray(val) ? val : JSON.parse(val);
+                                values.forEach(v => {
+                                    const item = container.querySelector(`[data-value="${v}"]`) 
+                                        || container.querySelector(`.chip[data-value="${v}"]`); 
+                                    if (item) item.classList.add('selected');
+                                });
+                                // Update hidden input
+                                const hidden = document.getElementById(key);
+                                if(hidden) hidden.value = JSON.stringify(values);
+                            }
+                        }
+                    });
+                }
+            }
+
+            validate() {
+                const currentPanel = document.querySelector(`.step-panel[data-step="${this.currentStep}"]`);
+                const required = currentPanel.querySelectorAll('[required]');
+                let valid = true;
+
+                required.forEach(el => {
+                    if (!el.value.trim()) {
+                        valid = false;
+                        el.style.borderColor = '#ff4444';
+                        el.style.animation = 'shake 0.4s ease';
+                        setTimeout(() => el.style.animation = '', 400);
+                        setTimeout(() => el.style.borderColor = '', 2000);
+                    }
+                });
+
+                return valid;
+            }
+
+            nextStep() {
+                if (this.currentStep === this.totalSteps) {
+                    this.submitWhatsApp();
+                    return;
+                }
+
+                if (this.validate()) {
+                    this.currentStep++;
+                    this.updateUI();
+                }
+            }
+
+            prevStep() {
+                if (this.currentStep > 1) {
+                    this.currentStep--;
+                    this.updateUI();
+                }
+            }
+
+            updateUI() {
+                // Visibility
+                this.elements.steps.forEach(step => {
+                    step.classList.remove('active');
+                    if (parseInt(step.dataset.step) === this.currentStep) {
+                        step.classList.add('active');
+                    }
+                });
+
+                // Scroll top
+                document.getElementById('formContainer').scrollTop = 0;
+
+                // Buttons
+                this.elements.prevBtn.style.visibility = this.currentStep === 1 ? 'hidden' : 'visible';
+                
+                if (this.currentStep === this.totalSteps) {
+                    this.renderDashboard();
+                    this.elements.nextBtn.textContent = 'Enviar no WhatsApp ➤';
+                    this.elements.nextBtn.classList.remove('btn-primary');
+                    this.elements.nextBtn.classList.add('btn-whatsapp');
+                } else {
+                    this.elements.nextBtn.textContent = 'Continuar';
+                    this.elements.nextBtn.classList.add('btn-primary');
+                    this.elements.nextBtn.classList.remove('btn-whatsapp');
+                }
+
+                // Progress
+                const progress = ((this.currentStep - 1) / (this.totalSteps - 1)) * 100;
+                this.elements.progressBar.style.width = `${progress}%`;
+            }
+
+            renderDashboard() {
+                const d = this.data;
+                const parse = (k) => {
+                    try { return JSON.parse(d[k] || '[]').join(', '); } 
+                    catch { return d[k] || '---'; }
+                };
+                const val = (k) => d[k] || '---';
+
+                this.elements.dashboard.innerHTML = `
+                    <div class="review-card"><div class="review-label">Cliente</div><div class="review-value">${val('nome')} - ${val('negocio')}</div></div>
+                    <div class="review-card"><div class="review-label">Conceito</div><div class="review-value">${val('descricao')}</div></div>
+                    <div class="review-card"><div class="review-label">Estética</div><div class="review-value">${parse('estilos')}</div></div>
+                    <div class="review-card"><div class="review-label">Cores</div><div class="review-value">Sim: ${val('cores_sim')}\nNão: ${val('cores_nao')}</div></div>
+                    <div class="review-card"><div class="review-label">Tipografia</div><div class="review-value">${parse('tipografia')}</div></div>
+                    <div class="review-card"><div class="review-label">Aplicações</div><div class="review-value">${parse('aplicacoes')}</div></div>
+                    <div class="review-card"><div class="review-label">Investimento</div><div class="review-value">${val('orcamento')}</div></div>
+                `;
+            }
+
+            submitWhatsApp() {
+                const d = this.data;
+                const safeParse = (key) => {
+                    try { 
+                        const v = JSON.parse(d[key]);
+                        return Array.isArray(v) ? v.join(', ') : v;
+                    } catch { return d[key] || 'Não informado'; }
+                };
+                const val = (k) => d[k] || 'Não informado';
+
+                let msg = `*🚀 BRIEFING IDENTIDADE VISUAL*`;
+                msg += `\n\n*👤 INFORMAÇÕES*`;
+                msg += `\nNome: ${val('nome')}`;
+                msg += `\nNegócio: ${val('negocio')}`;
+                msg += `\nEmail: ${val('email')}`;
+                
+                msg += `\n\n*🏢 SOBRE*`;
+                msg += `\nO que faz: ${val('descricao')}`;
+                msg += `\nPúblico: ${val('publico')}`;
+                msg += `\nDiferencial: ${val('diferenciais')}`;
+
+                msg += `\n\n*🎨 DIREÇÃO VISUAL*`;
+                msg += `\nLogo Atual: ${safeParse('tem_logo')}`;
+                msg += `\nEstilos: ${safeParse('estilos')}`;
+                msg += `\nCores Sim: ${val('cores_sim')}`;
+                msg += `\nCores Não: ${val('cores_nao')}`;
+                msg += `\nTipografia: ${safeParse('tipografia')}`;
+
+                msg += `\n\n*📦 APLICAÇÕES*`;
+                msg += `\n${safeParse('aplicacoes')}`;
+                msg += `\nSensações: ${safeParse('sensacoes')}`;
+
+                msg += `\n\n*💰 ALINHAMENTO*`;
+                msg += `\nPrazo: ${val('prazo')}`;
+                msg += `\nInvestimento: ${val('orcamento')}`;
+                msg += `\nObs: ${val('obs_finais')}`;
+
+                const url = `https://wa.me/5519991309164?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank');
+            }
+        }
+
+        // Initialize on Load
+        document.addEventListener('DOMContentLoaded', () => new BriefingApp());
+
+    </script>
+</body>
+</html>
