@@ -81,6 +81,32 @@ export default function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleInitialScroll = () => {
+      const hash = window.location.hash;
+      const params = new URLSearchParams(window.location.search);
+      const isVideoQuery = params.get('tab') === 'video' || params.get('portfolio') === 'video' || params.has('video') || params.has('videos');
+      
+      const targetId = isVideoQuery ? '#video' : hash;
+
+      if (targetId) {
+        // Wait for preloader to load and slide out (approx 2200ms)
+        setTimeout(() => {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }, 2300);
+      }
+    };
+
+    if (languageSelected) {
+      handleInitialScroll();
+    }
+  }, [languageSelected]);
+
   return (
     <ErrorBoundary>
       <div className="bg-dark min-h-screen text-white selection:bg-primary selection:text-white">
