@@ -5,9 +5,9 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useState } from 'react';
 
 const videos = [
-  { id: 1, videoId: 'q3HlgTIOVkg' },
-  { id: 2, videoId: 'vlPAVEGVs50' },
-  { id: 3, videoId: '2sp41_1nyb4' },
+  { id: 1, videoId: 'pmNMOgQGgLI' },
+  { id: 2, videoId: '7dEmi6PMEK0' },
+  { id: 3, videoId: 'Rz-3SishJyA' },
   { id: 4, videoId: 'jT83MSmCn7o' },
   { id: 5, videoId: 'CnlY4TmcUDk' },
   { id: 6, videoId: 'F0DsKTPpY1Y' },
