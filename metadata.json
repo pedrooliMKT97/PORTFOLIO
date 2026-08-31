@@ -1,5 +1,6 @@
 {
-  "name": "PDROLI.DG - Graphic Design Portfolio",
-  "description": "High-end graphic design portfolio for PDROLI.DG, featuring 3D elements, GSAP animations, and i18n support.",
-  "requestFramePermissions": []
+  "name": "Peagá Criativo",
+  "description": "Portfolio profissional de Design Gráfico, Produção de Vídeo, Identidade Visual e Marketing 360 com efeitos fluidos e componente Bend interativo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
