@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2827 1073" width="2827" height="1073">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafd"/>
+    </linearGradient>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0057ff" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="2827" height="1073" rx="48" fill="url(#bgGradient)"/>
+  
+  <!-- Subtle Grid Accent -->
+  <g opacity="0.04" stroke="#0d1b3d" stroke-width="2">
+    <line x1="0" y1="268" x2="2827" y2="268"/>
+    <line x1="0" y1="536" x2="2827" y2="536"/>
+    <line x1="0" y1="804" x2="2827" y2="804"/>
+    <line x1="706" y1="0" x2="706" y2="1073"/>
+    <line x1="1413" y1="0" x2="1413" y2="1073"/>
+    <line x1="2120" y1="0" x2="2120" y2="1073"/>
+  </g>
+
+  <!-- Center Content Group (Scaled & Positioned for 2827 x 1073) -->
+  <g transform="translate(360, 236)">
+    <!-- Brand Icon Monogram (P / H / Shape) -->
+    <g filter="url(#subtleGlow)">
+      <rect x="0" y="0" width="600" height="600" rx="120" fill="#0d1b3d"/>
+      <!-- Inner P Graphic -->
+      <path d="M160 140 H340 C410 140 465 195 465 265 C465 335 410 390 340 390 H250 V500 H160 V140 Z" fill="#0057ff"/>
+      <path d="M250 215 H330 C360 215 385 240 385 270 C385 300 360 325 330 325 H250 V215 Z" fill="#ffffff"/>
+      <!-- Green Vibrant Accent Dot -->
+      <rect x="390" y="420" width="85" height="85" rx="20" fill="#25D366"/>
+    </g>
+
+    <!-- Typography Group -->
+    <g transform="translate(690, 180)">
+      <!-- Main Brand Name -->
+      <text font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="190" letter-spacing="-4" fill="#0d1b3d">
+        PEAGÁ<tspan fill="#0057ff">CRIATIVO</tspan>
+      </text>
+      <!-- Brand Subtitle / Segment -->
+      <text y="150" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="64" letter-spacing="18" fill="#64748b">
+        DESIGN • VÍDEO • MARKETING
+      </text>
+    </g>
+  </g>
+
+  <!-- Subtle Inner Border -->
+  <rect x="4" y="4" width="2819" height="1065" rx="44" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+</svg>

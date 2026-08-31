@@ -1,0 +1,6 @@
+COLOQUE SUA FOTO DE PERFIL AQUI:
+
+Você pode salvar sua foto como:
+- fotodeperfil.png (direto em /public/fotodeperfil.png ou dentro desta pasta /public/perfil/fotodeperfil.png)
+
+Proporção recomendada: 4:5 vertical ou retrato (ex: 1080x1350px ou 800x1000px).

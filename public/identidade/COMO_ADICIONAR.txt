@@ -1,0 +1,9 @@
+COLOQUE SUAS IMAGENS DE IDENTIDADE VISUAL AQUI:
+
+Exemplos de arquivos aceitos:
+- id1.png (ou id1.jpg / id1.webp)
+- id2.png
+- id3.png
+- id4.png
+
+Proporção recomendada: 16:10 ou 16:9 widescreen (ex: 1920x1080px ou 1600x1000px).

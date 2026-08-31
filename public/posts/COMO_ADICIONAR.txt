@@ -1,0 +1,11 @@
+COLOQUE SEUS POSTS DE DESIGN GRÁFICO AQUI:
+
+Exemplos de arquivos aceitos:
+- post1.png (ou post1.jpg / post1.webp)
+- post2.png
+- post3.png
+- post4.png
+- post5.png
+- post6.png
+
+Proporção recomendada para posts: 4:5 (ex: 1080x1350px) ou 1:1 (1080x1080px).

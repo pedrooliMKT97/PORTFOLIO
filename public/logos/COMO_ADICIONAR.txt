@@ -1,0 +1,11 @@
+COLOQUE AS LOGOS DOS CLIENTES/PARCEIROS AQUI:
+
+Arquivos suportados:
+- mc1.png (ou mc1.svg / mc1.jpg)
+- mc2.png (ou mc2.svg)
+- mc3.png
+... até ...
+- mc16.png (ou mc16.svg)
+
+Você pode salvar seus arquivos tanto dentro desta pasta (/public/logos/mc1.png) quanto direto na raiz (/public/mc1.png).
+O site detecta automaticamente os formatos .png, .svg e .jpg.
