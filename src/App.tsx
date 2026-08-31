@@ -1,144 +1,133 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import React, { useEffect } from 'react';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { AboutSection } from './components/AboutSection';
+import { ClientsTape } from './components/ClientsTape';
+import { DesignSection } from './components/DesignSection';
+import { VideoSection } from './components/VideoSection';
+import { BrandingSection } from './components/BrandingSection';
+import { Marketing360Section } from './components/Marketing360Section';
+import { ContactSection } from './components/ContactSection';
+import { Footer } from './components/Footer';
+import { motion } from 'motion/react';
+import Lenis from 'lenis';
 
-import { useEffect, useState, lazy, Suspense, Component, ErrorInfo, ReactNode } from 'react';
-import CustomCursor from './components/CustomCursor';
-import Preloader from './components/Preloader';
-import LanguagePopup from './components/LanguagePopup';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ScrollProgress from './components/ScrollProgress';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
-
-class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
-  constructor(props: { children: ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(_: Error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="h-screen flex flex-col items-center justify-center bg-dark text-white p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ops! Algo deu errado.</h2>
-          <p className="text-white/60 mb-6">Ocorreu um erro inesperado. Por favor, recarregue a página.</p>
-          <button 
-            onClick={() => window.location.reload()}
-            className="px-6 py-2 bg-primary rounded-full font-semibold"
-          >
-            Recarregar
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
-const Services = lazy(() => import('./components/Services'));
-const Process = lazy(() => import('./components/Process'));
-const DesignPortfolio = lazy(() => import('./components/DesignPortfolio'));
-const IdentityPortfolio = lazy(() => import('./components/IdentityPortfolio'));
-const VideoPortfolio = lazy(() => import('./components/VideoPortfolio'));
-const About = lazy(() => import('./components/About'));
-const Contact = lazy(() => import('./components/Contact'));
-const Footer = lazy(() => import('./components/Footer'));
+// Variantes suaves de animação bidirecional (aparece ao rolar para baixo e para cima)
+const revealVariants = {
+  hidden: { opacity: 0, y: 35, scale: 0.985 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.75,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export default function App() {
-  const [languageSelected, setLanguageSelected] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return !!localStorage.getItem('languageSelected');
-    }
-    return false;
-  });
-
+  // Inicialização do Lenis otimizada para rolagem 100% fluida, suave e consistente
   useEffect(() => {
-    // Smooth scroll behavior for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || href === '#') return;
-        
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
+    const lenis = new Lenis({
+      duration: 1.0,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      syncTouch: false, // Permite rolagem nativa perfeitamente fluida no touch e trackpad
+      wheelMultiplier: 0.9, // Controle de velocidade ideal sem arrancadas
     });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    const animId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      lenis.destroy();
+    };
   }, []);
 
-  useEffect(() => {
-    const handleInitialScroll = () => {
-      const hash = window.location.hash;
-      const params = new URLSearchParams(window.location.search);
-      const isVideoQuery = params.get('tab') === 'video' || params.get('portfolio') === 'video' || params.has('video') || params.has('videos');
-      
-      const targetId = isVideoQuery ? '#video' : hash;
-
-      if (targetId) {
-        // Wait for preloader to load and slide out (approx 2200ms)
-        setTimeout(() => {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        }, 2300);
-      }
-    };
-
-    if (languageSelected) {
-      handleInitialScroll();
-    }
-  }, [languageSelected]);
-
   return (
-    <ErrorBoundary>
-      <div className="bg-dark min-h-screen text-white selection:bg-primary selection:text-white">
-        <CustomCursor />
-        {!languageSelected ? (
-          <LanguagePopup onSelect={() => setLanguageSelected(true)} />
-        ) : (
-          <>
-            <Preloader />
-            <ScrollProgress />
-            <Navbar />
-            
-            <main>
-              <Hero />
-              <Suspense fallback={<div className="h-screen flex items-center justify-center bg-dark"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
-                <Services />
-                <Process />
-                <DesignPortfolio />
-                <IdentityPortfolio />
-                <VideoPortfolio />
-                <About />
-                <Contact />
-              </Suspense>
-            </main>
+    <div className="min-h-screen bg-[#f8fafd] text-[#0d1b3d] flex flex-col font-sans selection:bg-[#0057ff] selection:text-white">
+      {/* Floating Centered Glass Navigation */}
+      <Navbar />
 
-            <Suspense fallback={null}>
-              <Footer />
-            </Suspense>
-            <FloatingWhatsApp />
-          </>
-        )}
-      </div>
-    </ErrorBoundary>
+      {/* Main Content Flow with Smooth Non-blocking Reveal Animations */}
+      <main className="flex-grow">
+        {/* Hero Section - Apenas Logo com Zoom inicial e Shrink ao rolar */}
+        <Hero />
+
+        {/* Quem Sou Eu - Fundo Azul, Texto Branco e Foto adaptada */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <AboutSection />
+        </motion.div>
+
+        {/* Faixa Azul Escuro de Clientes/Parceiros com Logos mc1 até mc16 (Rolagem Rápida) */}
+        <ClientsTape />
+
+        {/* Graphic Design Carousel (Molduras limpas para imagens) */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <DesignSection />
+        </motion.div>
+
+        {/* Audiovisual & 9:16 Video Reels */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <VideoSection />
+        </motion.div>
+
+        {/* Branding & Visual Identity (Molduras limpas para imagens) */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <BrandingSection />
+        </motion.div>
+
+        {/* Complete 360 Marketing with Clean Pillars */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <Marketing360Section />
+        </motion.div>
+
+        {/* Direct Contact Section */}
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <ContactSection />
+        </motion.div>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }

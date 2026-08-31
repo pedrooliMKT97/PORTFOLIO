@@ -1,44 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
-
-@theme {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  
-  --color-primary: #FF3B3B;
-  --color-dark: #0A0A0A;
-  --color-darker: #050505;
-}
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply bg-dark text-white font-sans antialiased;
-    overflow-x: hidden;
+    scroll-behavior: auto; /* Handled by Lenis for smooth momentum */
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
   }
 }
 
-@layer utilities {
-  .glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
-  }
-  
-  .glass-red {
-    @apply bg-primary/10 backdrop-blur-md border border-primary/20;
-  }
-  
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/40;
-  }
-  
-  .container {
-    @apply max-w-7xl mx-auto;
-  }
+/* Lenis Smooth Scroll Classes */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Super smooth, slow, and cinematic gliding speed */
+.animate-marquee-fast {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 140s linear infinite;
+}
+
+.animate-marquee-normal {
+  animation: marquee 120s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 135s linear infinite;
+}
+
+.animate-marquee-slow:hover,
+.animate-marquee-normal:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 6s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1400 {
+  perspective: 1400px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafd;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
