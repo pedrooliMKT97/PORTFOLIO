@@ -232,3 +232,8 @@ nav.floating-nav{position:fixed;z-index:50;top:24px;right:4%;background:#f8f9faf
 @keyframes gallery-links-in{from{transform:translateY(70px);opacity:0}to{transform:translateY(0);opacity:1}}
 @media(max-width:760px){nav.floating-nav{top:8px;left:10px;right:10px;justify-content:center;gap:14px;padding:10px 12px;font-size:11px}nav.floating-nav>a:not(.nav-contact){display:block}nav.floating-nav .nav-contact{padding:8px 10px;font-size:10px}.hero header{padding-top:64px}#project-dialog .window-bar{padding:12px;gap:10px}#project-dialog .window-bar h2{font-size:13px}#close-dialog{padding:8px 12px}}
 @media(max-width:400px){nav.floating-nav{gap:8px;font-size:10px}nav.floating-nav .nav-contact{font-size:9px;padding:7px}.floating-nav .glow-mount{max-width:130px}}
+@media(max-width:760px){
+ .hero .socials{position:absolute;flex-direction:column;right:clamp(18px,5.3vw,38px);bottom:clamp(18px,5.3vw,38px);left:auto;gap:8px}
+ .hero .socials a{width:42px;height:42px;flex-shrink:0}
+ .hero .hero-stats{min-height:194px;width:calc(100% - 58px);max-width:calc(100% - 58px);padding-bottom:0;align-items:flex-end}
+}
