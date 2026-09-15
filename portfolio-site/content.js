@@ -199,12 +199,24 @@ window.PORTFOLIO = {
       "type": "sites",
       "items": [
         {
+          "title": "Renan F. de Carvalho — Advocacia",
+          "url": "https://renan-theta.vercel.app/"
+        },
+        {
           "title": "Clínica Nosso Lar",
           "url": "https://www.clinicanossolar.com.br/"
         },
         {
+          "title": "Clínica Parizzi — Odontologia",
+          "url": "https://parizzi.vercel.app/"
+        },
+        {
           "title": "Presente Babi",
           "url": "https://presentebabi.vercel.app/"
+        },
+        {
+          "title": "Dr. Thiago Zago — Otorrinolaringologista",
+          "url": "https://thiagozao.vercel.app/"
         },
         {
           "title": "Supermercado Ponto Novo",
