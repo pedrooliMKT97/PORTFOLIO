@@ -176,8 +176,19 @@ const category=id=>config.categories.find(item=>item.id===id).items;
 // Stories are initialized by stories.js.
 createCarousel('site-carousel','site-carousel',category('sites'),item=>{
   const card=el('article','website-card'), preview=el('div','site-preview');
-  const previews=['preview-nosso-lar.png','preview-babi.png','preview-ponto-novo.png'];
-  preview.append(picture('assets/'+previews[category('sites').indexOf(item)],'Prévia do site '+item.title));
+  const previews={
+    'www.clinicanossolar.com.br':'preview-nosso-lar.png',
+    'presentebabi.vercel.app':'preview-babi.png',
+    'www.smpontonovo.com.br':'preview-ponto-novo.png'
+  };
+  const file=previews[new URL(item.url).hostname];
+  if(file) preview.append(picture('assets/'+file,'Prévia do site '+item.title));
+  else {
+    const domain=new URL(item.url).hostname.replace(/^www\./,'');
+    const fallback=el('div','site-preview-fallback');
+    fallback.append(el('div','site-preview-browser',domain),el('div','site-preview-name',item.title),el('div','site-preview-action','Visitar site ↗'));
+    preview.append(fallback);
+  }
   const link=externalLink(item.url,'','site-preview-link');link.setAttribute('aria-label',`Visitar ${item.title} em nova aba`);link.append(preview);
   const info=el('div','website-info');info.append(el('h3','',item.title),externalLink(item.url,'Visitar site ↗'));
   card.append(link,info);return card;
