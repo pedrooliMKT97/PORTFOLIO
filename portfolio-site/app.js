@@ -146,7 +146,6 @@ function createCarousel(id, className, items, render, auto = 0) {
       if (!mobileViewport.matches) loopPositioned=false;
     }
     controls.hidden=!overflowing(); pause.hidden=!overflowing();
-    root.querySelectorAll('.site-preview iframe').forEach(frame => {frame.style.transform=`scale(${frame.parentElement.clientWidth/1280})`;});
     schedule();
   });
   resize.observe(rail);
@@ -177,8 +176,11 @@ const category=id=>config.categories.find(item=>item.id===id).items;
 createCarousel('site-carousel','site-carousel',category('sites'),item=>{
   const card=el('article','website-card'), preview=el('div','site-preview');
   const previews={
+    'renan-theta.vercel.app':'preview-renan.png',
     'www.clinicanossolar.com.br':'preview-nosso-lar.png',
+    'parizzi.vercel.app':'preview-parizzi.png',
     'presentebabi.vercel.app':'preview-babi.png',
+    'thiagozao.vercel.app':'preview-thiago.png',
     'www.smpontonovo.com.br':'preview-ponto-novo.png'
   };
   const file=previews[new URL(item.url).hostname];
