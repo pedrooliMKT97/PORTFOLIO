@@ -312,13 +312,7 @@
     // hero sobe um pouco mais devagar que o scroll
     gsap.to('.hero__stickers', { yPercent: -25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero__title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    // sobre: a foto abre de baixo para cima e a imagem desliza por dentro; as habilidades saltam uma a uma
-    gsap.fromTo('.about__frame', { clipPath: 'inset(100% 0% 0% 0% round 26px)' }, {
-      clipPath: 'inset(0% 0% 0% 0% round 26px)', duration: 1.4, ease: 'expo.out', clearProps: 'clipPath',
-      scrollTrigger: { trigger: '.about__photo', start: 'top 82%', once: true }
-    });
-    gsap.fromTo('.about__frame img', { yPercent: -8, scale: 1.15 }, { yPercent: 8, scale: 1.15, ease: 'none', scrollTrigger: { trigger: '.about__photo', start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.from('.about__tag', { scale: 0, rotate: -40, duration: 0.9, ease: 'back.out(2.2)', scrollTrigger: { trigger: '.about__photo', start: 'top 60%', once: true } });
+    // sobre: os dados e as habilidades aparecem um a um
     gsap.from('#facts > div', { autoAlpha: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '#facts', start: 'top 88%', once: true } });
     ['#skills', '#tools'].forEach(sel => gsap.from(sel + ' li', {
       autoAlpha: 0, scale: 0.4, y: 20, rotate: () => gsap.utils.random(-14, 14), duration: 0.7, ease: 'back.out(2)', stagger: 0.06,
