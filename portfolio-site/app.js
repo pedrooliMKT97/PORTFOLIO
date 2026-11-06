@@ -306,7 +306,6 @@
       { autoAlpha: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 14px)', duration: 1.1, ease: 'expo.out', stagger: 0.08, clearProps: 'clipPath', overwrite: 'auto' });
     ScrollTrigger.batch(cards, { start: 'top 94%', once: true, onEnter: pop, onEnterBack: pop });
     // hero sobe um pouco mais devagar que o scroll
-    gsap.to('.hero__ghost', { yPercent: -35, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero__stickers', { yPercent: -25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero__title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     // sobre: a foto abre de baixo para cima e a imagem desliza por dentro; as habilidades saltam uma a uma
@@ -570,7 +569,6 @@
   const heroGrid = (() => {
     const cv = $('#heroFx'), ctx = cv.getContext('2d');
     const hex = h => { const n = parseInt(h.replace('#', ''), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
-    const PAL = [cssVar('--yellow'), cssVar('--red'), cssVar('--purple')].map(hex);
     const FG = hex(cssVar('--fg'));
     let W = 0, H = 0, pts = [], visible = true;
     const mouse = { x: -9999, y: -9999, on: false };
@@ -604,15 +602,11 @@
         p.v += (target - p.v) * 0.12;
         const wave = 0.5 + 0.5 * Math.sin(time * 1.6 - p.d * 0.012);
         const edge = Math.min(1, (reach - p.d) / 120);
-        let col = FG, a = (0.1 + wave * 0.08) * edge;
-        if (p.v > 0.03) {
-          const ang = Math.atan2(p.y - ay, p.x - ax);
-          col = PAL[((Math.floor((ang + Math.PI) / (Math.PI * 2 / 3)) % 3) + 3) % 3];
-          a = Math.max(a, (0.25 + p.v * 0.75) * edge);
-        }
-        ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${a.toFixed(3)})`;
+        // só pontinhos claros e discretos; perto do cursor eles ficam um pouco mais visíveis
+        const a = (0.05 + wave * 0.04 + p.v * 0.2) * edge;
+        ctx.fillStyle = `rgba(${FG[0]},${FG[1]},${FG[2]},${a.toFixed(3)})`;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.1 + p.v * 3.4 + wave * 0.4, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1 + p.v * 1.4 + wave * 0.3, 0, Math.PI * 2);
         ctx.fill();
       }
     });
@@ -639,7 +633,7 @@
     gsap.set(barKids, { autoAlpha: 0, y: -20 });
     gsap.set(".dock", { autoAlpha: 0 });
     gsap.set(".stk", { scale: 0, rotate: -30 });
-    gsap.set([".hero__spin", ".hero__ghost"], { autoAlpha: 0 });
+    gsap.set(".hero__spin", { autoAlpha: 0 });
   }
   function revealHero() {
     if (introDone) return;
@@ -653,7 +647,6 @@
       .to(barKids, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.06 }, 0.3)
       .to(".dock", { autoAlpha: 1, duration: 0.6 }, 0.9)
       .call(() => heroGrid.boot(1.8), null, 0)
-      .fromTo(".hero__ghost", { autoAlpha: 0, yPercent: 40 }, { autoAlpha: 1, yPercent: 0, duration: 1.8 }, 0.2)
       .to(".stk", { scale: 1, rotate: 0, duration: 1.1, ease: "back.out(2.2)", stagger: 0.09 }, 0.85)
       .to(".hero__spin", { autoAlpha: 1, duration: 0.8 }, 1.1)
       .call(() => heroEl.classList.add("is-in"), null, 1.45)
@@ -666,7 +659,7 @@
   setupReveals();
   setupSync();
   if (route) {
-    gsap.set([".hero .line__in", ".obj", ".hero__sub", ".hero__btns .btn", ...barKids, ".dock", ".stk", ".hero__spin", ".hero__ghost"], { clearProps: "all" });
+    gsap.set([".hero .line__in", ".obj", ".hero__sub", ".hero__btns .btn", ...barKids, ".dock", ".stk", ".hero__spin"], { clearProps: "all" });
     heroEl.classList.add("is-in"); heroGrid.done(); introDone = true;
   }
   else revealHero();

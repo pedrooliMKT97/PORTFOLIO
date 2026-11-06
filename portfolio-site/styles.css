@@ -98,11 +98,6 @@ html:not(.fine) .cursor { display: none; }
 .hero__text { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
 /* fundo: grade de pontos que acende perto do cursor */
 .hero__fx { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
-/* nome gigante vazado no rodapé da hero */
-.hero__ghost {
-  position: absolute; left: 50%; bottom: -.2em; z-index: -1; translate: -50% 0; font-weight: 800; font-size: 31vw; line-height: .8; letter-spacing: -.06em;
-  color: transparent; -webkit-text-stroke: 1.5px rgba(255, 252, 237, .09); white-space: nowrap; pointer-events: none; user-select: none;
-}
 /* adesivos flutuando em volta do título */
 .hero__stickers { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .stk { position: absolute; pointer-events: auto; text-decoration: none; will-change: transform; }
@@ -373,11 +368,10 @@ html:not(.fine) .contact__hint { display: none; }
   .hero__btns { gap: .5rem; }
   .hero__btns .btn { font-size: .86rem; padding: .85rem 1.05rem; }
   .about__grid { grid-template-columns: 1fr; }
-  .about__photo { order: -1; max-width: 260px; justify-self: start; margin: 0 0 .5rem 34px; }
+  .about__photo { display: none; } /* no celular a foto sai para a seção ficar mais limpa */
   .hero__spin { display: none; }
   .stk span { font-size: .78rem; padding: .45rem .8rem; }
   .stk--1 { left: 4%; top: 15%; } .stk--2 { right: 4%; top: 18%; } .stk--3 { left: 5%; bottom: 17%; } .stk--4 { right: 5%; bottom: 20%; }
-  .hero__ghost { font-size: 38vw; bottom: 3.5rem; }
   .facts { grid-template-columns: 1fr; gap: .7rem; }
   .facts > div { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
   .facts dd { margin: 0; text-align: right; }
