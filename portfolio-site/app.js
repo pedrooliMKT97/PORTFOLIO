@@ -268,7 +268,7 @@
 
   /* ------------------------------------------------ sobre mim: dados, habilidades e ferramentas */
   function buildAbout() {
-    $('#facts').innerHTML = t('facts').map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+    $('#facts').innerHTML = t('facts').map(([big, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(big)}</dd></div>`).join('');
     $('#skills').innerHTML = t('skills').map(s => `<li>${esc(s)}</li>`).join('');
     $('#tools').innerHTML = D.tools.map(s => `<li><img src="${s.icon}" alt="" width="22" height="22" loading="lazy">${esc(s.name)}</li>`).join('');
   }
@@ -314,7 +314,19 @@
     gsap.to('.hero__title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     // sobre: os dados e as habilidades aparecem um a um
     gsap.from('#facts > div', { autoAlpha: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '#facts', start: 'top 88%', once: true } });
-    ['#skills', '#tools'].forEach(sel => gsap.from(sel + ' li', {
+    // números contam de 0 até o valor quando aparecem
+    ScrollTrigger.create({ trigger: '#facts', start: 'top 85%', once: true, onEnter: () => $$('#facts dd').forEach(dd => {
+      const m = dd.textContent.match(/^(\d+)(.*)$/);
+      if (!m) return;
+      const o = { v: 0 }, end = +m[1], rest = m[2];
+      gsap.to(o, { v: end, duration: 1.4, ease: 'power3.out', onUpdate: () => { dd.textContent = Math.round(o.v) + rest; } });
+    }) });
+    // órbita e objetos 3D entram na tela
+    gsap.from('.orbit', { autoAlpha: 0, scale: 0.7, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.orbit', start: 'top 90%', once: true } });
+    gsap.from('.about__float', { scale: 0, rotate: -30, duration: 1.2, ease: 'back.out(2)', stagger: 0.15, scrollTrigger: { trigger: '.about', start: 'top 70%', once: true } });
+    gsap.to('.about__float--l', { yPercent: -60, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.to('.about__float--r', { yPercent: 50, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
+    ['#skills'].forEach(sel => gsap.from(sel + ' li', {
       autoAlpha: 0, scale: 0.4, y: 20, rotate: () => gsap.utils.random(-14, 14), duration: 0.7, ease: 'back.out(2)', stagger: 0.06,
       scrollTrigger: { trigger: sel, start: 'top 90%', once: true }
     }));
@@ -370,7 +382,7 @@
     lang = b.dataset.lang;
     try { localStorage.setItem('pc-lang', lang); } catch (e) {}
     applyLang();
-    $$('#svc li, #skills li, #tools li, #facts > div').forEach(li => gsap.set(li, { autoAlpha: 1, y: 0, scale: 1, rotate: 0 }));
+    $$('#svc li, #skills li, #facts > div').forEach(li => gsap.set(li, { autoAlpha: 1, y: 0, scale: 1, rotate: 0 }));
   }));
 
   /* ------------------------------------------------ cursor triângulo */
@@ -557,6 +569,46 @@
         gsap.to(el, { rotationY: ((e.clientX - r.left) / r.width - 0.5) * 10, rotationX: -((e.clientY - r.top) / r.height - 0.5) * 10, transformPerspective: 900, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
       });
       el.addEventListener('pointerleave', () => gsap.to(el, { rotationY: 0, rotationX: 0, duration: 0.9, ease: 'elastic.out(1,.6)', overwrite: 'auto' }));
+    });
+  }
+
+  /* ------------------------------------------------ órbita 3D das ferramentas: gira sozinha, inclina com o mouse e pode ser arrastada */
+  {
+    const orbit = $('#orbit'), ring = $('.orbit__ring');
+    const o = { ry: 0, fling: 0, tx: -14, tz: 0, ttx: -14, ttz: 0, drag: false, lx: 0, lt: 0, hover: false, visible: false };
+    new IntersectionObserver(es => { o.visible = es[0].isIntersecting; }).observe(orbit);
+    orbit.addEventListener('pointerenter', () => { o.hover = true; });
+    orbit.addEventListener('pointerleave', () => { o.hover = false; o.ttx = -14; o.ttz = 0; });
+    orbit.addEventListener('pointermove', e => {
+      const r = orbit.getBoundingClientRect();
+      o.ttx = -14 + ((e.clientY - r.top) / r.height - 0.5) * -16;
+      o.ttz = ((e.clientX - r.left) / r.width - 0.5) * 6;
+      if (!o.drag) return;
+      const now = performance.now(), dx = e.clientX - o.lx;
+      o.ry += dx * 0.006;
+      o.fling = dx * 0.006 / Math.max(1, now - o.lt) * 16;
+      o.lx = e.clientX; o.lt = now;
+    });
+    orbit.addEventListener('pointerdown', e => { o.drag = true; o.lx = e.clientX; o.lt = performance.now(); o.fling = 0; orbit.classList.add('is-drag'); orbit.setPointerCapture(e.pointerId); });
+    const up = () => { o.drag = false; orbit.classList.remove('is-drag'); };
+    orbit.addEventListener('pointerup', up);
+    orbit.addEventListener('pointercancel', up);
+    gsap.ticker.add((time, dt) => {
+      if (!o.visible || orbit.clientWidth < 600) return; // no celular as ferramentas ficam como etiquetas comuns
+      const s = Math.min(dt, 50) / 1000;
+      if (!o.drag) { o.ry += (o.hover ? 0.12 : 0.4) * s + o.fling; o.fling *= Math.pow(0.04, s); }
+      o.tx += (o.ttx - o.tx) * Math.min(1, s * 5);
+      o.tz += (o.ttz - o.tz) * Math.min(1, s * 5);
+      ring.style.transform = `rotateX(${o.tx.toFixed(2)}deg) rotateZ(${o.tz.toFixed(2)}deg)`;
+      const items = ring.querySelectorAll('li'), n = items.length || 1;
+      const R = Math.min(330, orbit.clientWidth * 0.42);
+      items.forEach((li, i) => {
+        const a = o.ry + i * Math.PI * 2 / n, deg = a * 180 / Math.PI, z = Math.cos(a);
+        // cada etiqueta gira junto com o anel, mas continua de frente para quem vê
+        li.style.transform = `rotateY(${deg.toFixed(2)}deg) translateZ(${R.toFixed(1)}px) rotateY(${(-deg).toFixed(2)}deg) rotateX(${(-o.tx).toFixed(2)}deg)`;
+        li.style.opacity = (0.28 + 0.72 * (z + 1) / 2).toFixed(3);
+        li.style.zIndex = String(Math.round((z + 1) * 100));
+      });
     });
   }
 

@@ -41,7 +41,7 @@ const KNOWS = ['design gráfico', 'social media', 'design para Instagram', 'edi�
 /* ---------- conteúdo pré-renderizado (o JS troca pelos cards animados; buscadores e IAs leem este) */
 const pre = {
   ABOUT: T.about,
-  FACTS: T.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join(''),
+  FACTS: T.facts.map(([big, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(big)}</dd></div>`).join(''),
   SKILLS: T.skills.map(s => `<li>${esc(s)}</li>`).join(''),
   TOOLS: D.tools.map(s => `<li><img src="${s.icon}" alt="" width="22" height="22" loading="lazy">${esc(s.name)}</li>`).join(''),
   SVC: T.svc.map(([n, d]) => `<li><span class="svc__name">${esc(n)}</span> <span class="svc__desc">${esc(d)}</span></li>`).join(''),

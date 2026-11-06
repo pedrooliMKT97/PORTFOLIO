@@ -110,16 +110,22 @@
 
   <!-- sobre mim -->
   <section class="about" id="sobre">
-    <div class="about__grid">
-      <div class="about__body">
-        <h2 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h2>
-        <p class="about__text" id="aboutText" data-i18n-html="about"><!--ABOUT--></p>
-        <dl class="facts" id="facts"><!--FACTS--></dl>
-        <h3 class="skills__title" data-i18n="skills_title" data-reveal>habilidades</h3>
-        <ul class="chips" id="skills"><!--SKILLS--></ul>
-        <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
-        <ul class="chips chips--tools" id="tools"><!--TOOLS--></ul>
+    <!-- objetos 3D flutuando nas laterais (computador) -->
+    <div class="about__float about__float--l" aria-hidden="true"><span class="obj obj--big" data-obj="headphones"></span></div>
+    <div class="about__float about__float--r" aria-hidden="true"><span class="obj obj--big" data-obj="computer"></span></div>
+    <div class="about__center">
+      <h2 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h2>
+      <p class="about__text" id="aboutText" data-i18n-html="about"><!--ABOUT--></p>
+      <dl class="facts" id="facts"><!--FACTS--></dl>
+      <h3 class="skills__title" data-i18n="skills_title" data-reveal>habilidades</h3>
+      <ul class="chips" id="skills"><!--SKILLS--></ul>
+      <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
+      <!-- ferramentas girando em órbita 3D -->
+      <div class="orbit" id="orbit">
+        <i class="orbit__floor" aria-hidden="true"></i>
+        <div class="orbit__ring"><ul class="chips chips--tools" id="tools"><!--TOOLS--></ul></div>
       </div>
+      <p class="orbit__hint" data-i18n="orbit_hint">arraste para girar</p>
     </div>
     <div class="about__svc">
       <h3 class="skills__title" data-i18n="svc_title" data-reveal>o que eu faço</h3>

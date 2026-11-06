@@ -81,7 +81,8 @@ window.PC = (function () {
       ticker_b: ['tráfego pago', 'IA aplicada', 'dashboards', 'estratégia', 'copy', 'gestão completa'],
       about_label: 'sobre mim', years: 'anos criando',
       about: 'Sou o Pedro. Há mais de <b class="c-yellow">6 anos</b> transformo ideias em marcas com presença. Conecto <b class="c-red">design</b>, <b class="c-purple">estratégia</b> e tecnologia para cuidar de cada detalhe da sua comunicação, do primeiro post ao site no ar. Hoje também toco o Cravo creative studio.',
-      facts: [['nome', 'Pedro'], ['especialidade', 'Designer gráfico & estrategista criativo'], ['experiência', '6+ anos criando']],
+      facts: [['6+', 'anos criando marcas'], ['2', 'estúdios: peagá criativo e Cravo'], ['7', 'ferramentas no dia a dia']],
+      orbit_hint: 'arraste para girar',
       skills_title: 'habilidades', tools_title: 'ferramentas', svc_title: 'o que eu faço',
       skills: ['design e social media', 'edição e captação', 'sites e landing pages', 'identidade visual', 'estratégia', 'tráfego pago', 'IA aplicada'],
       svc: [
@@ -117,7 +118,8 @@ window.PC = (function () {
       ticker_b: ['paid traffic', 'applied AI', 'dashboards', 'strategy', 'copy', 'full management'],
       about_label: 'about me', years: 'years creating',
       about: 'I’m Pedro. For over <b class="c-yellow">6 years</b> I’ve turned ideas into brands with presence. I connect <b class="c-red">design</b>, <b class="c-purple">strategy</b> and technology to take care of every detail of your communication, from the first post to the live website. I also run Cravo creative studio.',
-      facts: [['name', 'Pedro'], ['specialty', 'Graphic designer & creative strategist'], ['experience', '6+ years creating']],
+      facts: [['6+', 'years creating brands'], ['2', 'studios: peagá criativo and Cravo'], ['7', 'everyday tools']],
+      orbit_hint: 'drag to spin',
       skills_title: 'skills', tools_title: 'tools', svc_title: 'what I do',
       skills: ['design & social media', 'editing & filming', 'websites & landing pages', 'visual identity', 'strategy', 'paid traffic', 'applied AI'],
       svc: [
