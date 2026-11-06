@@ -23,3 +23,10 @@ Este site é publicado pela Vercel a partir do repositório no GitHub. Ao enviar
 Depois de publicar, cadastre o site no Google Search Console e envie `sitemap.xml`.
 
 O domínio usado no SEO está em `data.js` (`site_url`). Se mudar, rode `node build.cjs` de novo.
+
+## Pastas que vêm de outros projetos
+
+- `cravo/`: cópia do site da Cravo creative studio (projeto em `Documents\Codex\2026-09-24\seguindo-a-mimha-identidade-x20\outputs\cravo`), gerada com os links ajustados para `/cravo/`. O `cravo/hero-fit.js` foi adicionado aqui para a imagem do estúdio não cobrir os botões da hero.
+- `identidades/muving/`: cópia da apresentação da Muving (projeto em `C:\Users\pedro\muving-brand-showcase`), com os caminhos ajustados para `/identidades/muving/`.
+
+Ao mudar algo nesses projetos, é preciso gerar a cópia de novo e substituir a pasta.
