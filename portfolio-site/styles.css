@@ -300,6 +300,9 @@ html:not(.fine) .card__cap { transform: none; font-size: .75rem; padding: .4rem 
 .grid--ids { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .grid--ids .card { aspect-ratio: 4/3; }
 .grid--ids .card img { width: 100%; height: 100%; object-fit: cover; }
+/* card que abre a apresentação: selo fixo no canto */
+.card__tag { position: absolute; left: 12px; top: 12px; z-index: 2; font-weight: 800; font-size: .78rem; padding: .45rem .8rem; border-radius: 99px; background: var(--yellow); color: var(--ink); transition: transform .4s var(--ease); }
+.card--pres:hover .card__tag { transform: rotate(-4deg) scale(1.06); }
 
 /* ============ contato ============ */
 .contact { position: relative; min-height: 92svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: clamp(5rem, 14vh, 9rem) var(--gut) 0; overflow: hidden; border-top: 1px solid var(--line); }

@@ -48,7 +48,7 @@ const pre = {
   POSTS: D.posts.map(p => `<figure class="pre"><img src="${p.src}" alt="${esc(p.title)} — post para redes sociais" width="${p.w}" height="${p.h}" loading="lazy"><figcaption>${esc(p.title)}</figcaption></figure>`).join(''),
   VIDEOS: D.videos.map(v => `<figure class="pre"><a href="${yt(v.yt)}"><img src="${v.src}" alt="${esc(v.title)} — vídeo" width="${v.w}" height="${v.h}" loading="lazy"></a><figcaption>${esc(v.title)}</figcaption></figure>`).join(''),
   SITES: D.sites.map(s => `<figure class="pre"><img src="${s.src}" alt="Prévia do site ${esc(s.title)}" width="${s.w}" height="${s.h}" loading="lazy"><figcaption>${s.url ? `<a href="${s.url}">${esc(s.title)}</a>` : esc(s.title)} — ${esc(s.kind)}</figcaption></figure>`).join(''),
-  IDS: D.ids.map(i => `<figure class="pre"><img src="${i.src}" alt="Identidade visual ${esc(i.title)}" width="${i.w}" height="${i.h}" loading="lazy"><figcaption>${esc(i.title)}</figcaption></figure>`).join('')
+  IDS: D.ids.map(i => `<figure class="pre"><img src="${i.src}" alt="Identidade visual ${esc(i.title)}" width="${i.w}" height="${i.h}" loading="lazy"><figcaption>${i.url ? `<a href="${i.url}">${esc(i.title)}: apresentação interativa da marca</a>` : esc(i.title)}</figcaption></figure>`).join('')
 };
 
 /* ---------- dados estruturados (schema.org) */
@@ -57,7 +57,7 @@ const workItems = {
   posts: () => listOf(D.posts, p => ({ '@type': 'ImageObject', name: p.title, contentUrl: abs(p.src), creator: { '@id': PERSON } })),
   videos: () => listOf(D.videos, v => ({ '@type': 'CreativeWork', name: v.title, url: yt(v.yt), thumbnailUrl: abs(v.src), creator: { '@id': PERSON } })),
   sites: () => listOf(D.sites, s => ({ '@type': 'CreativeWork', name: s.title, description: s.kind, image: abs(s.src), ...(s.url ? { url: s.url } : {}), creator: { '@id': PERSON } })),
-  identidades: () => listOf(D.ids, i => ({ '@type': 'ImageObject', name: 'Identidade visual ' + i.title, contentUrl: abs(i.src), creator: { '@id': PERSON } }))
+  identidades: () => listOf(D.ids, i => ({ '@type': 'ImageObject', name: 'Identidade visual ' + i.title, contentUrl: abs(i.src), ...(i.url ? { url: abs(i.url) } : {}), creator: { '@id': PERSON } }))
 };
 
 function jsonld(route) {
@@ -233,7 +233,7 @@ ${D.videos.map(v => `- ${v.title}: ${yt(v.yt)}`).join('\n')}
 
 ## Identidades visuais
 
-${D.ids.map(i => `- ${i.title}`).join('\n')}
+${D.ids.map(i => `- ${i.title}${i.url ? `: apresentação interativa em ${abs(i.url)}` : ''}`).join('\n')}
 
 ## Posts para redes sociais
 

@@ -93,8 +93,12 @@
       <span class="browser__top"><i></i><i></i><i></i><span class="browser__url" ${it.url ? '' : 'data-soon'}>${it.url ? esc(host(it.url)) : ''}</span></span>
       <span class="browser__shot"><img src="${it.long}" alt="Prévia do site ${esc(it.title)}" width="${it.lw}" height="${it.lh}" loading="lazy" decoding="async"><span class="browser__go" data-preview></span></span>
       <span class="browser__meta"><span class="browser__title">${esc(it.title)}</span><span class="browser__kind">${esc(it.kind)}</span></span></button>`).join('');
-  $('#gIds').innerHTML = D.ids.map((it, i) =>
-    `<button type="button" class="card" data-group="ids" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
+  $('#gIds').innerHTML = D.ids.map((it, i) => it.url
+    ? `<a class="card card--pres" href="${it.url}" target="_blank" rel="noopener" data-cursor="cur_pres" aria-label="${esc(it.title)}: ${esc(t('see_pres'))}">
+      <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
+      <span class="card__tag" data-pres-tag></span>
+      <span class="card__cap">${esc(it.title)}${arrow}</span></a>`
+    : `<button type="button" class="card" data-group="ids" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
       <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
       <span class="card__cap">${esc(it.title)}${arrow}</span></button>`).join('');
   $('#cPosts').textContent = D.posts.length;
@@ -357,6 +361,7 @@
     $$('.hero__title [data-i18n]').forEach(el => { el.innerHTML = el.textContent.split(' ').map(w => `<span class="hw">${Array.from(w).map(c => `<span class="hc">${esc(c)}</span>`).join('')}</span>`).join(' '); });
     $$('[data-preview]').forEach(s => { s.textContent = t('see_preview'); });
     $$('[data-soon]').forEach(s => { s.textContent = t('soon'); });
+    $$('[data-pres-tag]').forEach(s => { s.textContent = t('pres_tag'); });
     $('#lbPrev').setAttribute('aria-label', t('prev'));
     $('#lbNext').setAttribute('aria-label', t('next'));
     $('#lbClose').setAttribute('aria-label', t('close'));
@@ -501,7 +506,7 @@
     $('#lbTitle').textContent = it.kind ? `${it.title} · ${it.kind}` : it.title;
     $('#lbCount').textContent = `${cur.i + 1} / ${list.length}`;
     lbVisit.hidden = !it.url;
-    if (it.url) { lbVisit.href = it.url; lbVisit.textContent = t('visit'); }
+    if (it.url) { lbVisit.href = it.url; lbVisit.textContent = t(it.type === 'id' ? 'see_pres' : 'visit'); }
     if (!reduce && dir) gsap.fromTo(lbMedia, { x: dir * 50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5, ease: 'power3.out' });
   }
   function openLB(g, i, from) {
