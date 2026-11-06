@@ -1,9 +1,17 @@
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
+// Build da Vercel: gera as páginas do portfólio e copia só o que vai ao ar para dist/
+import { execFileSync } from 'node:child_process';
+import { cp, mkdir, rm } from 'node:fs/promises';
+import path from 'node:path';
+
+// recria index.html, /posts/, /videos/, ... a partir de page.template.html + data.js
+execFileSync(process.execPath, ['portfolio-site/build.cjs'], { stdio: 'inherit' });
+
+// arquivos de trabalho que não precisam ir ao ar
+const skip = new Set(['build.cjs', 'page.template.html', 'README.md']);
+await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
-await cp('portfolio-site', 'dist', { recursive: true });
-const domain = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
-const imageUrl = domain ? `https://${domain}/assets/social-share.jpg` : '/assets/social-share.jpg';
-const siteUrl = domain ? `https://${domain}/` : '/';
-const index = await readFile('dist/index.html', 'utf8');
-await writeFile('dist/index.html', index.replaceAll('__SOCIAL_SHARE_IMAGE__', imageUrl).replace('__SOCIAL_SHARE_URL__', siteUrl));
+await cp('portfolio-site', 'dist', {
+  recursive: true,
+  filter: src => !skip.has(path.basename(src)) || path.dirname(path.resolve(src)) !== path.resolve('portfolio-site')
+});
 console.log('Portfolio ready in dist');

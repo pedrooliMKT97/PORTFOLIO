@@ -1,20 +1,7 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# peagá criativo — portfólio
 
-# Run and deploy your AI Studio app
+Site publicado em https://www.pdrolidesigner.com.br/ (Vercel).
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/9c454b9f-7fbf-4ade-b49f-e4ea73f343e5
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **O site fica em `portfolio-site/`.** Veja `portfolio-site/README.md` para editar conteúdo e gerar as páginas.
+- **Publicação:** a Vercel roda `node scripts/build-portfolio.mjs` e publica a pasta `dist/` (configurado em `vercel.json`).
+- As pastas `src/` e `portfolio-effects-source/` e o `formulario.html` da raiz são de versões anteriores e não vão ao ar.

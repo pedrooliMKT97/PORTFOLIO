@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# buscadores de IA também podem ler e citar o site
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.pdrolidesigner.com.br/sitemap.xml
