@@ -1,0 +1,27 @@
+2:"$Sreact.fragment"
+3:"/cravo/projetos/casa-do-sol/_next/static/chunks/0irma17mi5-5_.js"
+4:"/cravo/projetos/casa-do-sol/_next/static/chunks/2qw_9ssh8ya7f.js"
+5:I[52605,["$3","$4"],"default"]
+6:I[45670,["$3","$4"],"default"]
+b:I[64633,["$3","$4"],""]
+c:I[59559,["$3","$4"],"OutletBoundary"]
+d:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[59559,["$3","$4"],"$10"]
+12:"MetadataBoundary"
+13:I[59559,["$3","$4"],"$12"]
+14:I[7664,["$3","$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"flex min-h-[80svh] items-center bg-ink pb-20 pt-36 text-paper","children":["$","div",null,{"className":"shell","children":[["$","p",null,{"className":"eyebrow text-sun/80","children":"Página não encontrada"}],["$","h1",null,{"className":"text-display mt-6 max-w-[14ch] font-extrabold","children":"Este endereço não existe por aqui."}],["$","p",null,{"className":"mt-6 max-w-lg text-lead text-paper/75","children":"O link pode ter mudado ou o imóvel não está mais disponível. Que tal recomeçar pelo catálogo?"}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 sm:flex-row","children":[["$","$Lb",null,{"href":"/imoveis","className":"btn btn-sun","children":["Ver imóveis",["$","svg",null,{"width":20,"height":20,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":1.6,"strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"focusable":false,"className":"btn-arrow","children":["$","path",null,{"d":"M4 12h15M13.5 6.5 19 12l-5.5 5.5"}]}]]}],["$","$Lb",null,{"href":"/","className":"btn btn-ghost-light","children":"Voltar ao início"}]]}]]}]}],null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$9"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","content":"#14110F"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Casa do Sol | Imóveis com arquitetura e atenção aos detalhes"}],["$","meta","1",{"name":"description","content":"A Casa do Sol apresenta casas, apartamentos e empreendimentos com um olhar atento para arquitetura, localização e o que faz sentido para cada pessoa."}],["$","meta","2",{"name":"application-name","content":"Casa do Sol"}],["$","meta","3",{"name":"robots","content":"index, follow"}],["$","link","4",{"rel":"canonical","href":"https://cravo-creative-studio.vercel.app/projetos/casa-do-sol/"}],["$","meta","5",{"name":"format-detection","content":"telephone=no, address=no, email=no"}],["$","meta","6",{"property":"og:title","content":"Casa do Sol | Imóveis com arquitetura e atenção aos detalhes"}],["$","meta","7",{"property":"og:description","content":"A Casa do Sol apresenta casas, apartamentos e empreendimentos com um olhar atento para arquitetura, localização e o que faz sentido para cada pessoa."}],["$","meta","8",{"property":"og:url","content":"https://cravo-creative-studio.vercel.app/projetos/casa-do-sol/"}],["$","meta","9",{"property":"og:site_name","content":"Casa do Sol"}],["$","meta","10",{"property":"og:locale","content":"pt_BR"}],["$","meta","11",{"property":"og:image","content":"https://cravo-creative-studio.vercel.app/projetos/casa-do-sol/og/casa-do-sol-og.jpg"}],["$","meta","12",{"property":"og:image:width","content":"1200"}],["$","meta","13",{"property":"og:image:height","content":"630"}],["$","meta","14",{"property":"og:image:alt","content":"Casa do Sol: casa contemporânea ao entardecer com a marca Casa do Sol"}],["$","meta","15",{"property":"og:type","content":"website"}],["$","meta","16",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","17",{"name":"twitter:title","content":"Casa do Sol"}],["$","meta","18",{"name":"twitter:description","content":"A Casa do Sol apresenta casas, apartamentos e empreendimentos com um olhar atento para arquitetura, localização e o que faz sentido para cada pessoa."}],["$","meta","19",{"name":"twitter:image","content":"https://cravo-creative-studio.vercel.app/projetos/casa-do-sol/og/casa-do-sol-og.jpg"}],["$","link","20",{"rel":"icon","href":"/cravo/projetos/casa-do-sol/icon.png?icon.0535ovrr5yqmz.png","sizes":"512x512","type":"image/png"}],["$","link","21",{"rel":"apple-touch-icon","href":"/cravo/projetos/casa-do-sol/apple-icon.png?apple-icon.44q3-3s-t-jt8.png","sizes":"180x180","type":"image/png"}],["$","$L14","22",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@15","v":null,"s":"$9"}},"a":"$@16","u":"$@17","b":"rZ4cqhJmRrZ7HbvIyoWZ7"}
+e:null
+17:true
+9:300
+9:C
+16:0
+7:"$undefined"
+15:"$undefined"
+f:"$undefined"

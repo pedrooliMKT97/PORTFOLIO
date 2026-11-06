@@ -5,7 +5,25 @@
   "outputDirectory": "dist",
   "trailingSlash": true,
   "redirects": [
-    { "source": "/galeria.html", "destination": "/trabalhos/", "permanent": true },
-    { "source": "/galeria", "destination": "/trabalhos/", "permanent": true }
+    {
+      "source": "/galeria.html",
+      "destination": "/trabalhos/",
+      "permanent": true
+    },
+    {
+      "source": "/galeria",
+      "destination": "/trabalhos/",
+      "permanent": true
+    },
+    {
+      "source": "/agencia",
+      "destination": "/cravo/",
+      "permanent": false
+    },
+    {
+      "source": "/agencia/",
+      "destination": "/cravo/",
+      "permanent": false
+    }
   ]
 }

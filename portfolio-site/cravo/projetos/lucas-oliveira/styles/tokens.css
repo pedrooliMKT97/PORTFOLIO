@@ -1,0 +1,36 @@
+/* Tokens visuais — base: specs/design-tokens.css do pacote. */
+:root {
+  --navy-950: #0b1c29;
+  --navy-900: #122b3d;
+  --navy-700: #29485d;
+  --beige-100: #f4ede2;
+  --beige-200: #e8ddcc;
+  --beige-300: #d6c5ac;
+  --ink: #1d2d39;
+  --muted: #52616a;
+  --error: #a43131;
+  --focus: #835d28;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --container: 77.5rem;
+  --gutter: 1.25rem;
+  --section-space: 4.25rem;
+  --radius-card: 1.375rem;
+  --radius-hero: clamp(1.75rem, 3vw, 2.5rem);
+  --radius-pill: 999px;
+  --shadow-nav: 0 8px 28px rgb(11 28 41 / 10%);
+  --shadow-card: 0 12px 32px rgb(11 28 41 / 7%);
+  --shadow-card-hover: 0 18px 40px rgb(11 28 41 / 12%);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --duration-ui: 200ms;
+  --duration-reveal: 550ms;
+  --nav-top: 12px;
+  --nav-h: 72px;
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 2rem; }
+}
+@media (min-width: 1024px) {
+  :root { --gutter: 4rem; --section-space: 6.5rem; --nav-top: 20px; --nav-h: 88px; }
+}

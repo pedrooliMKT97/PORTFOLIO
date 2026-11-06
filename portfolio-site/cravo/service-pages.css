@@ -1,0 +1,22 @@
+.service-page{background:var(--ink);color:var(--cream)}
+.service-header{position:sticky;z-index:20;top:18px;display:flex;align-items:center;justify-content:space-between;gap:30px;width:min(1176px,calc(100% - 112px));margin:24px auto 60px;padding:17px 22px;background:#24241fde;border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(16px)}
+.service-header img{width:116px;height:auto}.service-header nav{display:flex;align-items:center;gap:28px;font-size:14px}.service-header a:hover{color:var(--orange)}
+.breadcrumb{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-bottom:36px}.breadcrumb a:hover{color:var(--orange)}
+.service-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:55px;align-items:center;padding-bottom:76px;border-bottom:1px solid var(--line)}
+.service-hero h1{font:700 clamp(38px,5.2vw,70px)/1.05 'Chakra Petch',sans-serif;letter-spacing:-.05em;text-transform:uppercase;overflow-wrap:break-word;margin-bottom:25px}
+.service-hero p,.service-explanation p,.service-next p{font-size:16px;line-height:1.85;color:var(--muted);margin-bottom:25px}.service-hero img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.service-explanation{display:grid;grid-template-columns:1.2fr 1fr;gap:65px;padding-block:76px}
+.service-hero img[src*="clinic-portfolio"]{object-fit:contain;background:#310b09}
+.service-page h2{font:600 clamp(25px,3vw,34px)/1.15 'Chakra Petch',sans-serif;letter-spacing:-.035em;margin-bottom:26px}
+.service-includes{padding:32px;border:1px solid #663127;background:linear-gradient(140deg,#42211b,#231411);border-radius:14px;align-self:start}
+.service-includes ul{list-style:none;padding:0}.service-includes li{font-size:16px;line-height:1.6;padding:14px 0;border-bottom:1px solid #ffffe918}.service-includes li:last-child{border-bottom:0}
+.service-faq{padding-block:25px 70px}.service-faq details{border-bottom:1px solid var(--line);padding-block:20px}.service-faq summary{font-size:17px;line-height:1.55;cursor:pointer;transition:color .25s}.service-faq summary:hover,.service-faq details[open] summary{color:var(--orange)}.service-faq details p{font-size:16px;color:var(--muted);line-height:1.8;margin-top:18px;max-width:800px}
+.service-next{padding:42px;border-radius:14px;border:1px solid var(--line);background:#1d1d18;margin-bottom:40px}.service-next .instagram-link{margin-top:23px;width:max-content}
+.related-services{display:flex;flex-wrap:wrap;gap:15px 28px;padding:0 0 70px}.related-services a{font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:6px}.related-services a:hover{color:var(--orange)}
+.missing-page{padding-block:90px}.missing-page img{margin-bottom:45px}.missing-page h1{font:700 48px/1.1 'Chakra Petch',sans-serif;letter-spacing:-.04em;margin-bottom:25px}.missing-page p{font-size:16px;margin-bottom:35px;color:var(--muted)}
+@media(max-width:1050px){.service-header{width:calc(100% - 72px)}.service-hero{gap:32px}.service-explanation{gap:35px}}
+@media(max-width:700px){.service-header{width:calc(100% - 32px);top:12px;padding:14px;margin:16px auto 35px;gap:14px}.service-header img{width:93px}.service-header nav{gap:14px;font-size:12px}.breadcrumb{font-size:12px;gap:9px;margin-bottom:28px}.service-hero{grid-template-columns:1fr;gap:30px;padding-bottom:45px}.service-hero h1{font-size:clamp(32px,8.6vw,47px)}.service-hero p,.service-explanation p,.service-next p{font-size:16px}.service-hero img{aspect-ratio:3/2}.service-explanation{grid-template-columns:1fr;gap:30px;padding-block:45px}.service-includes{padding:25px}.service-faq{padding-block:12px 45px}.service-faq summary{font-size:16px}.service-next{padding:25px}.related-services{gap:17px 20px;padding-bottom:45px}.service-page .physical-button{font-size:10px;max-width:100%;padding-inline:18px}}
+@media(max-width:360px){.service-header nav{gap:10px;font-size:11px}.service-header img{width:83px}.service-hero h1{font-size:32px}}
+
+.service-hero img[src*="editing-bts"]{object-position:center 42%}
+.service-hero img[src*="automacao"]{object-fit:cover}

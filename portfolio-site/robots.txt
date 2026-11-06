@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# demonstrações de sites dentro da Cravo não precisam aparecer no Google
+Disallow: /cravo/projetos/
 
 # buscadores de IA também podem ler e citar o site
 User-agent: GPTBot
@@ -14,3 +16,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.pdrolidesigner.com.br/sitemap.xml
+Sitemap: https://www.pdrolidesigner.com.br/cravo/sitemap.xml

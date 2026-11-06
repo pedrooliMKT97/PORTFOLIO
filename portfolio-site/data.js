@@ -70,7 +70,10 @@ window.PC = (function () {
   const i18n = {
     pt: {
       skip: 'pular', motion_on: 'ativar animações',
-      nav_work: 'trabalhos', nav_about: 'sobre', nav_contact: 'contato',
+      nav_work: 'trabalhos', nav_about: 'sobre', nav_contact: 'contato', nav_agency: 'agência',
+      ag_kicker: 'minha agência', ag_title: 'quando o projeto pede um time inteiro, entra a Cravo.',
+      ag_sub: 'Cravo creative studio: agência de marketing em Mogi Guaçu com branding, vídeo, social media, tráfego pago, sites e automação com IA.',
+      ag_cta: 'conhecer a Cravo', cur_agency: 'ir para a Cravo',
       h_a: 'design com', h_b: 'direção,', h_c: 'energia', h_d: 'e', h_e: 'ritmo.',
       hero_sub: 'Pedro, designer gráfico e estrategista criativo à frente do peagá criativo.',
       btn_work: 'conheça meu trabalho', btn_contact: 'entrar em contato',
@@ -103,7 +106,10 @@ window.PC = (function () {
     },
     en: {
       skip: 'skip', motion_on: 'turn on animations',
-      nav_work: 'work', nav_about: 'about', nav_contact: 'contact',
+      nav_work: 'work', nav_about: 'about', nav_contact: 'contact', nav_agency: 'agency',
+      ag_kicker: 'my agency', ag_title: 'when a project needs a whole team, Cravo steps in.',
+      ag_sub: 'Cravo creative studio: a marketing agency in Mogi Guaçu, Brazil, for branding, video, social media, paid traffic, websites and AI automation.',
+      ag_cta: 'visit Cravo', cur_agency: 'go to Cravo',
       h_a: 'design with', h_b: 'direction,', h_c: 'energy', h_d: 'and', h_e: 'rhythm.',
       hero_sub: 'Pedro, graphic designer and creative strategist behind peagá criativo.',
       btn_work: 'see my work', btn_contact: 'get in touch',

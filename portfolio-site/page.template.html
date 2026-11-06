@@ -45,6 +45,7 @@
       <a class="roll" href="trabalhos/" data-route="trabalhos"><span data-i18n="nav_work">trabalhos</span></a>
       <a class="roll" href="sobre/" data-route="sobre"><span data-i18n="nav_about">sobre</span></a>
       <a class="roll" href="contato/" data-route="contato"><span data-i18n="nav_contact">contato</span></a>
+      <a class="roll roll--agency" href="cravo/" data-portal><span data-i18n="nav_agency">agência</span></a>
     </nav>
     <div class="bar__tools">
       <div class="lang" role="group" aria-label="Idioma">
@@ -61,6 +62,7 @@
   <a href="trabalhos/" data-route="trabalhos" data-i18n="nav_work">trabalhos</a>
   <a href="sobre/" data-route="sobre" data-i18n="nav_about">sobre</a>
   <a href="contato/" data-route="contato" data-i18n="nav_contact">contato</a>
+  <a href="cravo/" data-portal data-i18n="nav_agency">agência</a>
 </nav>
 
 <main>
@@ -161,6 +163,20 @@
     </section>
   </section>
 
+  <!-- agência: portal para o site da Cravo (mesmo domínio, em /cravo/) -->
+  <section class="agency" id="agencia">
+    <a class="agency__portal" href="cravo/" data-portal data-cursor="cur_agency">
+      <span class="agency__grid" aria-hidden="true"></span>
+      <span class="agency__text">
+        <span class="agency__kicker" data-i18n="ag_kicker">minha agência</span>
+        <h2 class="agency__title" data-i18n="ag_title">quando o projeto pede um time inteiro, entra a Cravo.</h2>
+        <span class="agency__sub" data-i18n="ag_sub">Cravo creative studio: agência de marketing em Mogi Guaçu com branding, vídeo, social media, tráfego pago, sites e automação com IA.</span>
+        <span class="agency__cta"><span data-i18n="ag_cta">conhecer a Cravo</span><i aria-hidden="true">↗</i></span>
+      </span>
+      <span class="agency__art" aria-hidden="true"><img src="cravo/assets/hero-studio.webp" alt="" width="1672" height="941" loading="lazy" decoding="async"></span>
+    </a>
+  </section>
+
   <!-- contato -->
   <section class="contact" id="contato">
     <h2 class="contact__title" data-h="contato" data-split data-i18n="cta">vamos fazer acontecer?</h2>
@@ -177,6 +193,7 @@
         <a href="identidades/" data-route="identidades" data-i18n="sec_ids">identidades</a>
         <a href="sobre/" data-route="sobre" data-i18n="nav_about">sobre</a>
         <a href="contato/" data-route="contato" data-i18n="nav_contact">contato</a>
+        <a href="cravo/" data-portal>Cravo creative studio</a>
       </nav>
       <div class="foot__row">
         <span>© 2026 peagá criativo · @peagacriativo</span>
@@ -186,6 +203,9 @@
     </footer>
   </section>
 </main>
+
+<!-- transição laranja ao ir para a Cravo -->
+<div class="portal" aria-hidden="true"><img src="cravo/assets/mascot.webp" alt="" width="320" height="320"></div>
 
 <!-- visualizador -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visualizador" hidden>

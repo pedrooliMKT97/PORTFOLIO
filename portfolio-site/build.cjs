@@ -91,7 +91,7 @@ function jsonld(route) {
       '@type': 'Person', '@id': PERSON, name: 'Pedro', jobTitle: 'Designer gráfico e estrategista criativo',
       description: 'Designer gráfico e estrategista criativo há mais de 6 anos, à frente do peagá criativo e do Cravo creative studio.',
       url: urlOf('sobre'), image: abs('assets/pedro.jpg'), worksFor: { '@id': ORG },
-      affiliation: { '@type': 'Organization', name: 'Cravo creative studio' }, sameAs: [IG], knowsAbout: KNOWS
+      affiliation: { '@type': 'Organization', name: 'Cravo creative studio', url: SITE + 'cravo/' }, sameAs: [IG], knowsAbout: KNOWS
     },
     {
       '@type': 'ItemList', '@id': SITE + '#menu', name: 'Menu do site',
@@ -191,6 +191,8 @@ ${(routeImages[r] || []).map(src => `    <image:image><image:loc>${abs(src)}</im
 
 write('robots.txt', `User-agent: *
 Allow: /
+# demonstrações de sites dentro da Cravo não precisam aparecer no Google
+Disallow: /cravo/projetos/
 
 # buscadores de IA também podem ler e citar o site
 User-agent: GPTBot
@@ -205,6 +207,7 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: ${SITE}sitemap.xml
+Sitemap: ${SITE}cravo/sitemap.xml
 `);
 
 write('llms.txt', `# peagá criativo
@@ -238,6 +241,10 @@ ${D.ids.map(i => `- ${i.title}${i.url ? `: apresentação interativa em ${abs(i.
 ## Posts para redes sociais
 
 ${D.posts.map(p => `- ${p.title}`).join('\n')}
+
+## Agência
+
+Pedro também toca a Cravo creative studio, agência de marketing em Mogi Guaçu (SP): ${SITE}cravo/
 
 ## Contato
 

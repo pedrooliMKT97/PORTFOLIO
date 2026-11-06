@@ -1,0 +1,52 @@
+1:"$Sreact.fragment"
+:HL["/cravo/projetos/casa-do-sol/_next/static/chunks/1s9vgkgh868y9.css","style"]
+2:T9ec,(function(){
+var d=document.documentElement;if(d.getAttribute('data-intro')!=='pending')return;
+var o,done=false,started=false;
+function reveal(){if(done)return;done=true;if(o)o.style.pointerEvents='none';d.setAttribute('data-intro','done');window.dispatchEvent(new Event('cds:intro-done'));}
+function finish(){reveal();if(o&&o.parentNode)o.parentNode.removeChild(o);}
+try{
+if(document.hidden||!Element.prototype.animate){finish();return;}
+o=document.createElement('div');o.className='site-intro';o.setAttribute('aria-hidden','true');
+var g=document.createElement('div');g.className='intro-grid';
+var vw=window.innerWidth,vh=window.innerHeight,cols=vw>=1024?14:vw>=640?10:6,rows=Math.min(12,Math.max(7,Math.round(cols*vh/vw)));
+g.style.gridTemplateColumns='repeat('+cols+',1fr)';g.style.gridTemplateRows='repeat('+rows+',1fr)';
+var tiles=[],r,c;
+for(r=0;r<rows;r++){for(c=0;c<cols;c++){var t=document.createElement('div');t.className='intro-tile';t.setAttribute('data-delay',String(Math.max(0,((rows-1-r)+c)*30+(((r*7+c*13)%5)-2)*6)));tiles.push(t);g.appendChild(t);}}
+var l=document.createElement('div');l.className='intro-logo-wrap';
+l.innerHTML='<img class="intro-logo" src="/cravo/projetos/casa-do-sol/branding/logo-casa-do-sol-intro.webp" alt="" width="680" height="205" fetchpriority="high" decoding="async">';
+o.appendChild(g);o.appendChild(l);document.body.appendChild(o);
+var safety=setTimeout(finish,7000);
+var go=function(){if(started)return;started=true;
+var hold=Math.max(250,1150-performance.now());
+setTimeout(function(){
+l.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-8px) scale(0.96)'}],{duration:600,easing:'cubic-bezier(0.65,0,0.35,1)',fill:'forwards'});
+var end=0;
+tiles.forEach(function(t){var delay=120+Number(t.getAttribute('data-delay'));end=Math.max(end,delay+600);
+t.animate([{opacity:1,transform:'scale(1.02)'},{opacity:0,transform:'scale(0.9)'}],{duration:600,delay:delay,easing:'cubic-bezier(0.22,1,0.36,1)',fill:'forwards'});});
+setTimeout(function(){clearTimeout(safety);reveal();},Math.round(end*0.5));setTimeout(function(){if(o&&o.parentNode)o.parentNode.removeChild(o);},end+40);
+},hold);};
+var wait=function(){var img=document.querySelector('[data-intro-media] img');if(!img||img.complete){go();return;}
+var to=setTimeout(go,2400);var ok=function(){clearTimeout(to);go();};img.addEventListener('load',ok,{once:true});img.addEventListener('error',ok,{once:true});};
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',wait,{once:true});}else{wait();}
+}catch(e){finish();}
+})();8:X
+0:{"t":{"t":{"s":"","h":16,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/cravo/projetos/casa-do-sol/_next/static/chunks/1s9vgkgh868y9.css","precedence":"next"}],["$","script","script-0",{"src":"/cravo/projetos/casa-do-sol/_next/static/chunks/0irma17mi5-5_.js","async":true}],["$","script","script-1",{"src":"/cravo/projetos/casa-do-sol/_next/static/chunks/2qw_9ssh8ya7f.js","async":true}]],["$","html",null,{"lang":"pt-BR","className":"hJlnFq_variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var d=document.documentElement;d.setAttribute('data-js','');d.setAttribute('data-intro',/[?&]intro=0(&|$)/.test(location.search)?'skip':'pending');})();"}}]}],["$","body",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],["$","a",null,{"href":"#conteudo","className":"sr-only z-[300] rounded-[10px] bg-sun px-4 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4","children":"Pular para o conteúdo"}],"$L3","$L4","$L5","$L6"]}]]}]]}],"p":"$@7","v":null,"s":"$8"}}},"a":"$@9","u":"$@a","b":"rZ4cqhJmRrZ7HbvIyoWZ7"}
+b:"/cravo/projetos/casa-do-sol/_next/static/chunks/0irma17mi5-5_.js"
+c:"/cravo/projetos/casa-do-sol/_next/static/chunks/2qw_9ssh8ya7f.js"
+d:I[62700,["$b","$c"],"FloatingHeader"]
+e:I[52605,["$b","$c"],"default"]
+f:I[45670,["$b","$c"],"default"]
+10:"/cravo/projetos/casa-do-sol/_next/static/chunks/19optrusfx-h0.js"
+11:I[64633,["$b","$c","$10"],""]
+12:I[60457,["$b","$c","$10"],"Reveal"]
+13:I[78810,["$b","$c","$10"],"Image"]
+3:["$","$Ld",null,{}]
+4:["$","main",null,{"id":"conteudo","children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","div",null,{"className":"page-enter","children":["$","$Lf",null,{}]}],"templateStyles":[],"templateScripts":null,"notFound":[["$","section",null,{"className":"flex min-h-[80svh] items-center bg-ink pb-20 pt-36 text-paper","children":["$","div",null,{"className":"shell","children":[["$","p",null,{"className":"eyebrow text-sun/80","children":"Página não encontrada"}],["$","h1",null,{"className":"text-display mt-6 max-w-[14ch] font-extrabold","children":"Este endereço não existe por aqui."}],["$","p",null,{"className":"mt-6 max-w-lg text-lead text-paper/75","children":"O link pode ter mudado ou o imóvel não está mais disponível. Que tal recomeçar pelo catálogo?"}],["$","div",null,{"className":"mt-10 flex flex-col gap-3 sm:flex-row","children":[["$","$L11",null,{"href":"/imoveis","className":"btn btn-sun","children":["Ver imóveis",["$","svg",null,{"width":20,"height":20,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":1.6,"strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"focusable":false,"className":"btn-arrow","children":["$","path",null,{"d":"M4 12h15M13.5 6.5 19 12l-5.5 5.5"}]}]]}],["$","$L11",null,{"href":"/","className":"btn btn-ghost-light","children":"Voltar ao início"}]]}]]}]}],[]]}]}]
+5:["$","footer",null,{"className":"bg-ink text-paper","children":["$","div",null,{"className":"shell pb-10 pt-20 md:pt-28","children":[["$","div",null,{"className":"grid gap-14 lg:grid-cols-12","children":[["$","$L12",null,{"className":"lg:col-span-5","children":[["$","$L11",null,{"href":"/","className":"inline-block w-[min(220px,60vw)] rounded-md","aria-label":"Casa do Sol, página inicial","children":["$","$L13",null,{"src":"/cravo/projetos/casa-do-sol/branding/logo-casa-do-sol.png","alt":"Casa do Sol","width":1802,"height":544,"sizes":"220px","className":"h-auto w-full"}]}],["$","p",null,{"className":"mt-8 max-w-sm text-paper/65","children":"Imóveis com arquitetura, conforto e atenção aos detalhes."}]]}],["$","nav",null,{"aria-label":"Rodapé","className":"lg:col-span-3","children":[["$","h2",null,{"className":"eyebrow text-sun/70","children":"Navegação"}],["$","ul",null,{"className":"mt-6 grid gap-3","children":[[["$","li","/",{"children":["$","$L11",null,{"href":"/","className":"link-underline text-paper/85 hover:text-paper","children":"Início"}]}],["$","li","/imoveis",{"children":["$","$L11",null,{"href":"/imoveis","className":"link-underline text-paper/85 hover:text-paper","children":"Imóveis"}]}],["$","li","/sobre",{"children":["$","$L11",null,{"href":"/sobre","className":"link-underline text-paper/85 hover:text-paper","children":"Sobre"}]}],["$","li","/contato",{"children":["$","$L11",null,{"href":"/contato","className":"link-underline text-paper/85 hover:text-paper","children":"Contato"}]}]],["$","li",null,{"children":["$","$L11",null,{"href":"/privacidade","className":"link-underline text-paper/85 hover:text-paper","children":"Política de privacidade"}]}]]}]]}],["$","div",null,{"className":"lg:col-span-4","children":[["$","h2",null,{"className":"eyebrow text-sun/70","children":"Contato"}],["$","ul",null,{"className":"mt-6 grid gap-3","children":[null,"","",["$","li",null,{"children":["$","$L11",null,{"href":"/contato#formulario","className":"flex items-center gap-3 text-paper/85 hover:text-paper","children":[["$","svg",null,{"width":18,"height":18,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":1.6,"strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"focusable":false,"className":"text-sun","children":["$","path",null,{"d":"M7 17 17 7M8.5 7H17v8.5"}]}]," Enviar mensagem pelo site"]}]}]]}],false]}]]}],["$","div",null,{"className":"mt-20 flex flex-col gap-4 border-t border-paper/15 pt-8 text-[0.8rem] text-paper/50 md:flex-row md:items-center md:justify-between","children":[["$","p",null,{"children":["© ",2026," ","Casa do Sol",".","",""]}],["$","p",null,{"className":"flex flex-wrap gap-x-4 gap-y-1","children":[["$","span",null,{"children":"Imóveis exibidos são ilustrativos."}],["$","span",null,{"children":"Fotografias: Unsplash. Vídeo: Pexels."}]]}]]}]]}]}]
+6:null
+8:300
+a:true
+8:C
+9:0
+7:"$undefined"

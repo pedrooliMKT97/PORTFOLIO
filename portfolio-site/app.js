@@ -566,6 +566,30 @@
     });
   }
 
+  /* ------------------------------------------------ portal para a Cravo: círculo laranja cresce do clique */
+  {
+    const portal = $('.portal'), portalImg = $('.portal img');
+    const closePortal = () => { gsap.killTweensOf([portal, portalImg]); gsap.set(portal, { clipPath: 'circle(0px at 50% 50%)' }); gsap.set(portalImg, { opacity: 0 }); };
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[data-portal]');
+      if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      const x = e.clientX || innerWidth / 2, y = e.clientY || innerHeight / 2;
+      const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      gsap.timeline({ onComplete: () => { location.href = a.href; } })
+        .fromTo(portal, { clipPath: `circle(0px at ${x}px ${y}px)` }, { clipPath: `circle(${r}px at ${x}px ${y}px)`, duration: 0.75, ease: 'expo.inOut' })
+        .fromTo(portalImg, { opacity: 0, scale: 0.4, rotate: -20 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.45, ease: 'back.out(2)' }, 0.45)
+        .to({}, { duration: 0.15 });
+    });
+    // voltando com o botão "voltar" do navegador, o círculo não pode ficar cobrindo a página
+    addEventListener('pageshow', closePortal);
+    // a seção aparece crescendo ao entrar na tela
+    gsap.fromTo('.agency__portal', { clipPath: 'inset(10% 6% 10% 6% round 32px)' }, {
+      clipPath: 'inset(0% 0% 0% 0% round 32px)', ease: 'none',
+      scrollTrigger: { trigger: '.agency', start: 'top 95%', end: 'top 35%', scrub: 0.6 }
+    });
+  }
+
   /* ------------------------------------------------ contato */
   $('#waCta').href = `https://wa.me/${D.whatsapp}?text=${encodeURIComponent(D.waText)}`;
 

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /cravo/projetos/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /cravo/projetos/
+
+Sitemap: https://www.pdrolidesigner.com.br/cravo/sitemap.xml
