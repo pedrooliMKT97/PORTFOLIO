@@ -1,7 +1,8 @@
 /* Conteúdo do portfólio (extraído de pdrolidesigner.com.br) */
 window.PC = (function () {
   const A = 'assets/';
-  const art = (f, title, w, h) => ({ type: 'art', src: A + f, title, w, h });
+  const thumb = f => A + 'thumbs/' + f.replace(/\.\w+$/, '.jpg'); // miniatura leve para grades e esteira
+  const art = (f, title, w, h) => ({ type: 'art', src: A + f, thumb: thumb(f), title, w, h });
 
   const posts = [
     art('pizza-combo.webp', 'Pizza Company — Combo', 1080, 1350),
@@ -39,7 +40,7 @@ window.PC = (function () {
     ['identidade-flor.webp', 'Flor de Brasa'],
     ['identidade-victor.webp', 'Espetinhos do Victor'],
     ['identidade-barans.webp', 'Baran’s']
-  ].map(([f, t, url, tag]) => ({ type: 'id', src: A + f, title: t, url: url || null, tag: tag || null, w: 1200, h: 900 }));
+  ].map(([f, t, url, tag]) => ({ type: 'id', src: A + f, thumb: thumb(f), title: t, url: url || null, tag: tag || null, w: 1200, h: 900 }));
 
   /* src = topo do site; long = página inteira (rola no hover e no visualizador) */
   const site = (key, title, kind, url, longH) => ({
@@ -78,6 +79,7 @@ window.PC = (function () {
       h_a: 'design com', h_b: 'direção,', h_c: 'energia', h_d: 'e', h_e: 'ritmo.',
       hero_sub: 'Pedro, designer gráfico e estrategista criativo à frente do peagá criativo.',
       btn_work: 'conheça meu trabalho', btn_contact: 'entrar em contato',
+      see_all: 'ver todos os {n} posts', k_posts: 'post', k_videos: 'vídeo', k_sites: 'site', k_ids: 'identidade',
       ticker_a: ['social media', 'edição de vídeo', 'captação', 'sites & landing pages', 'identidade visual'],
       ticker_b: ['tráfego pago', 'IA aplicada', 'dashboards', 'estratégia', 'copy', 'gestão completa'],
       about_label: 'sobre mim', years: 'anos criando',
@@ -115,6 +117,7 @@ window.PC = (function () {
       h_a: 'design with', h_b: 'direction,', h_c: 'energy', h_d: 'and', h_e: 'rhythm.',
       hero_sub: 'Pedro, graphic designer and creative strategist behind peagá criativo.',
       btn_work: 'see my work', btn_contact: 'get in touch',
+      see_all: 'see all {n} posts', k_posts: 'post', k_videos: 'video', k_sites: 'website', k_ids: 'identity',
       ticker_a: ['social media', 'video editing', 'filming', 'websites & landing pages', 'visual identity'],
       ticker_b: ['paid traffic', 'applied AI', 'dashboards', 'strategy', 'copy', 'full management'],
       about_label: 'about me', years: 'years creating',

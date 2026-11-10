@@ -7,7 +7,7 @@ import path from 'node:path';
 execFileSync(process.execPath, ['portfolio-site/build.cjs'], { stdio: 'inherit' });
 
 // arquivos de trabalho que não precisam ir ao ar
-const skip = new Set(['build.cjs', 'page.template.html', 'README.md']);
+const skip = new Set(['build.cjs', 'thumbs.cjs', 'page.template.html', 'README.md']);
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('portfolio-site', 'dist', {

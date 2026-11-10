@@ -40,7 +40,7 @@
 <!-- ao rolar, a barra se fecha no nome "peagá" e fica flutuando -->
 <header class="bar">
   <div class="bar__in">
-    <a class="brand" href="./" data-route="" aria-label="peagá criativo, início"><span>peagá</span></a>
+    <div class="bar__id"><a class="brand" href="./" data-route="" aria-label="peagá criativo, início"><span>peagá</span></a><span class="bar__where" id="barWhere" aria-hidden="true"></span></div>
     <nav class="bar__nav" aria-label="Seções">
       <a class="roll" href="trabalhos/" data-route="trabalhos"><span data-i18n="nav_work">trabalhos</span></a>
       <a class="roll" href="sobre/" data-route="sobre"><span data-i18n="nav_about">sobre</span></a>
@@ -69,18 +69,12 @@
   <!-- hero -->
   <section class="hero" id="inicio">
     <canvas class="hero__fx" id="heroFx" aria-hidden="true"></canvas>
-    <div class="hero__stickers" aria-hidden="true">
-      <a class="stk stk--1" href="posts/" data-route="posts" tabindex="-1" data-depth="1.1"><span data-i18n="sec_posts">posts</span></a>
-      <a class="stk stk--2" href="videos/" data-route="videos" tabindex="-1" data-depth="-0.8"><span data-i18n="sec_videos">vídeos</span></a>
-      <a class="stk stk--3" href="sites/" data-route="sites" tabindex="-1" data-depth="0.7"><span data-i18n="sec_sites">sites & LPs</span></a>
-      <a class="stk stk--4" href="identidades/" data-route="identidades" tabindex="-1" data-depth="-1.2"><span data-i18n="sec_ids">identidades</span></a>
-    </div>
     <div class="hero__text">
     <h1 class="hero__title" data-h="">
       <span class="line"><span class="line__in">
         <span data-i18n="h_a">design com</span>
         <span class="obj" data-obj="computer" aria-hidden="true"></span>
-        <span class="mark"><span class="c-yellow" data-i18n="h_b">direção,</span></span>
+        <span class="c-yellow" data-i18n="h_b">direção,</span>
       </span></span>
       <span class="line"><span class="line__in">
         <span class="obj" data-obj="can" aria-hidden="true"></span>
@@ -96,42 +90,8 @@
       <a class="btn btn--line magnetic" href="contato/" data-route="contato"><span data-i18n="btn_contact">entrar em contato</span></a>
     </div>
     </div>
-    <a class="hero__spin" href="trabalhos/" data-route="trabalhos" aria-label="Ver trabalhos">
-      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="spinPath" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#spinPath">peagá criativo ✦ design com direção ✦ </textPath></text></svg>
-      <span aria-hidden="true">↓</span>
-    </a>
-  </section>
-
-  <!-- faixas cruzadas de serviços -->
-  <section class="bands" aria-label="Serviços">
-    <div class="band band--y"><div class="band__track" id="bandA"></div></div>
-    <div class="band band--p"><div class="band__track" id="bandB"></div></div>
-  </section>
-
-  <!-- sobre mim -->
-  <section class="about" id="sobre">
-    <!-- objetos 3D flutuando nas laterais (computador) -->
-    <div class="about__float about__float--l" aria-hidden="true"><span class="obj obj--big" data-obj="headphones"></span></div>
-    <div class="about__float about__float--r" aria-hidden="true"><span class="obj obj--big" data-obj="computer"></span></div>
-    <div class="about__center">
-      <h2 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h2>
-      <p class="about__text" id="aboutText" data-i18n-html="about"><!--ABOUT--></p>
-      <dl class="facts" id="facts"><!--FACTS--></dl>
-      <h3 class="skills__title" data-i18n="skills_title" data-reveal>habilidades</h3>
-      <ul class="chips" id="skills"><!--SKILLS--></ul>
-      <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
-      <!-- ferramentas girando em órbita 3D -->
-      <div class="orbit" id="orbit">
-        <i class="orbit__floor" aria-hidden="true"></i>
-        <div class="orbit__ring"><ul class="chips chips--tools" id="tools"><!--TOOLS--></ul></div>
-      </div>
-      <p class="orbit__hint" data-i18n="orbit_hint">arraste para girar</p>
-    </div>
-    <div class="about__svc">
-      <h3 class="skills__title" data-i18n="svc_title" data-reveal>o que eu faço</h3>
-      <ul class="svc" id="svc"><!--SVC--></ul>
-    </div>
-    <div class="svc__float" aria-hidden="true"><img alt="" id="svcImg"><div class="svc__chips" id="svcChips"></div></div>
+    <!-- esteira: trabalhos reais passando; dá para arrastar e clicar -->
+    <div class="reel" id="reel"><div class="reel__track" id="reelTrack"></div></div>
   </section>
 
 
@@ -150,6 +110,7 @@
     <section class="sec" id="posts">
       <div class="sec__head"><h3 class="sec__title" data-h="posts" data-split data-i18n="sec_posts">posts</h3><p data-reveal data-i18n="d_posts">Cada nicho, uma nova ideia.</p></div>
       <div class="grid grid--posts" id="gPosts"><!--POSTS--></div>
+      <button class="more" id="morePosts" type="button" hidden></button>
     </section>
     <section class="sec" id="videos">
       <div class="sec__head"><h3 class="sec__title" data-h="videos" data-split data-i18n="sec_videos">vídeos</h3><p data-reveal data-i18n="d_videos">Histórias em movimento.</p></div>
@@ -163,6 +124,36 @@
       <div class="sec__head"><h3 class="sec__title" data-h="identidades" data-split data-i18n="sec_ids">identidades</h3><p data-reveal data-i18n="d_ids">Marcas com personalidade.</p></div>
       <div class="grid grid--ids" id="gIds"><!--IDS--></div>
     </section>
+  </section>
+
+  <!-- faixas cruzadas de serviços -->
+  <section class="bands" aria-label="Serviços">
+    <div class="band band--y"><div class="band__track" id="bandA"></div></div>
+    <div class="band band--p"><div class="band__track" id="bandB"></div></div>
+  </section>
+
+  <!-- sobre mim -->
+  <section class="about" id="sobre">
+    <!-- objetos 3D flutuando nas laterais (computador) -->
+    <div class="about__float about__float--l" aria-hidden="true"><span class="obj obj--big" data-obj="headphones"></span></div>
+    <div class="about__float about__float--r" aria-hidden="true"><span class="obj obj--big" data-obj="computer"></span></div>
+    <div class="about__center">
+      <h2 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h2>
+      <p class="about__text" id="aboutText" data-i18n-html="about"><!--ABOUT--></p>
+      <dl class="facts" id="facts"><!--FACTS--></dl>
+      <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
+      <!-- ferramentas girando em órbita 3D -->
+      <div class="orbit" id="orbit">
+        <i class="orbit__floor" aria-hidden="true"></i>
+        <div class="orbit__ring"><ul class="chips chips--tools" id="tools"><!--TOOLS--></ul></div>
+      </div>
+      <p class="orbit__hint" data-i18n="orbit_hint">arraste para girar</p>
+    </div>
+    <div class="about__svc">
+      <h3 class="skills__title" data-i18n="svc_title" data-reveal>o que eu faço</h3>
+      <ul class="svc" id="svc"><!--SVC--></ul>
+    </div>
+    <div class="svc__float" aria-hidden="true"><img alt="" id="svcImg"><div class="svc__chips" id="svcChips"></div></div>
   </section>
 
   <!-- agência: portal para o site da Cravo (mesmo domínio, em /cravo/) -->

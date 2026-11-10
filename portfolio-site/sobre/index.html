@@ -62,7 +62,7 @@
 <!-- ao rolar, a barra se fecha no nome "peagá" e fica flutuando -->
 <header class="bar">
   <div class="bar__in">
-    <a class="brand" href="./" data-route="" aria-label="peagá criativo, início"><span>peagá</span></a>
+    <div class="bar__id"><a class="brand" href="./" data-route="" aria-label="peagá criativo, início"><span>peagá</span></a><span class="bar__where" id="barWhere" aria-hidden="true"></span></div>
     <nav class="bar__nav" aria-label="Seções">
       <a class="roll" href="trabalhos/" data-route="trabalhos"><span data-i18n="nav_work">trabalhos</span></a>
       <a class="roll" href="sobre/" data-route="sobre"><span data-i18n="nav_about">sobre</span></a>
@@ -91,18 +91,12 @@
   <!-- hero -->
   <section class="hero" id="inicio">
     <canvas class="hero__fx" id="heroFx" aria-hidden="true"></canvas>
-    <div class="hero__stickers" aria-hidden="true">
-      <a class="stk stk--1" href="posts/" data-route="posts" tabindex="-1" data-depth="1.1"><span data-i18n="sec_posts">posts</span></a>
-      <a class="stk stk--2" href="videos/" data-route="videos" tabindex="-1" data-depth="-0.8"><span data-i18n="sec_videos">vídeos</span></a>
-      <a class="stk stk--3" href="sites/" data-route="sites" tabindex="-1" data-depth="0.7"><span data-i18n="sec_sites">sites & LPs</span></a>
-      <a class="stk stk--4" href="identidades/" data-route="identidades" tabindex="-1" data-depth="-1.2"><span data-i18n="sec_ids">identidades</span></a>
-    </div>
     <div class="hero__text">
     <p class="hero__title" data-h="">
       <span class="line"><span class="line__in">
         <span data-i18n="h_a">design com</span>
         <span class="obj" data-obj="computer" aria-hidden="true"></span>
-        <span class="mark"><span class="c-yellow" data-i18n="h_b">direção,</span></span>
+        <span class="c-yellow" data-i18n="h_b">direção,</span>
       </span></span>
       <span class="line"><span class="line__in">
         <span class="obj" data-obj="can" aria-hidden="true"></span>
@@ -118,42 +112,8 @@
       <a class="btn btn--line magnetic" href="contato/" data-route="contato"><span data-i18n="btn_contact">entrar em contato</span></a>
     </div>
     </div>
-    <a class="hero__spin" href="trabalhos/" data-route="trabalhos" aria-label="Ver trabalhos">
-      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="spinPath" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#spinPath">peagá criativo ✦ design com direção ✦ </textPath></text></svg>
-      <span aria-hidden="true">↓</span>
-    </a>
-  </section>
-
-  <!-- faixas cruzadas de serviços -->
-  <section class="bands" aria-label="Serviços">
-    <div class="band band--y"><div class="band__track" id="bandA"></div></div>
-    <div class="band band--p"><div class="band__track" id="bandB"></div></div>
-  </section>
-
-  <!-- sobre mim -->
-  <section class="about" id="sobre">
-    <!-- objetos 3D flutuando nas laterais (computador) -->
-    <div class="about__float about__float--l" aria-hidden="true"><span class="obj obj--big" data-obj="headphones"></span></div>
-    <div class="about__float about__float--r" aria-hidden="true"><span class="obj obj--big" data-obj="computer"></span></div>
-    <div class="about__center">
-      <h1 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h1>
-      <p class="about__text" id="aboutText" data-i18n-html="about">Sou o Pedro. Há mais de <b class="c-yellow">6 anos</b> transformo ideias em marcas com presença. Conecto <b class="c-red">design</b>, <b class="c-purple">estratégia</b> e tecnologia para cuidar de cada detalhe da sua comunicação, do primeiro post ao site no ar. Hoje também toco o Cravo creative studio.</p>
-      <dl class="facts" id="facts"><div><dt>anos criando marcas</dt><dd>6+</dd></div><div><dt>estúdios: peagá criativo e Cravo</dt><dd>2</dd></div><div><dt>ferramentas no dia a dia</dt><dd>7</dd></div></dl>
-      <h3 class="skills__title" data-i18n="skills_title" data-reveal>habilidades</h3>
-      <ul class="chips" id="skills"><li>design e social media</li><li>edição e captação</li><li>sites e landing pages</li><li>identidade visual</li><li>estratégia</li><li>tráfego pago</li><li>IA aplicada</li></ul>
-      <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
-      <!-- ferramentas girando em órbita 3D -->
-      <div class="orbit" id="orbit">
-        <i class="orbit__floor" aria-hidden="true"></i>
-        <div class="orbit__ring"><ul class="chips chips--tools" id="tools"><li><img src="assets/icons/photoshop.svg" alt="" width="22" height="22" loading="lazy">Photoshop</li><li><img src="assets/icons/illustrator.svg" alt="" width="22" height="22" loading="lazy">Illustrator</li><li><img src="assets/icons/figma.svg" alt="" width="22" height="22" loading="lazy">Figma</li><li><img src="assets/icons/canva.svg" alt="" width="22" height="22" loading="lazy">Canva</li><li><img src="assets/icons/capcut.svg" alt="" width="22" height="22" loading="lazy">CapCut</li><li><img src="assets/icons/chatgpt.svg" alt="" width="22" height="22" loading="lazy">ChatGPT</li><li><img src="assets/icons/claude.svg" alt="" width="22" height="22" loading="lazy">Claude</li></ul></div>
-      </div>
-      <p class="orbit__hint" data-i18n="orbit_hint">arraste para girar</p>
-    </div>
-    <div class="about__svc">
-      <h3 class="skills__title" data-i18n="svc_title" data-reveal>o que eu faço</h3>
-      <ul class="svc" id="svc"><li><span class="svc__name">Design &amp; Social Media</span> <span class="svc__desc">Cada nicho, uma nova ideia.</span></li><li><span class="svc__name">Edição &amp; Captação</span> <span class="svc__desc">Do primeiro frame ao último detalhe.</span></li><li><span class="svc__name">Sites &amp; Landing Pages</span> <span class="svc__desc">Presença além do feed.</span></li><li><span class="svc__name">Identidade Visual</span> <span class="svc__desc">Marcas com personalidade.</span></li><li><span class="svc__name">Gestão completa</span> <span class="svc__desc">Estratégia, tráfego pago e IA aplicada.</span></li></ul>
-    </div>
-    <div class="svc__float" aria-hidden="true"><img alt="" id="svcImg"><div class="svc__chips" id="svcChips"></div></div>
+    <!-- esteira: trabalhos reais passando; dá para arrastar e clicar -->
+    <div class="reel" id="reel"><div class="reel__track" id="reelTrack"></div></div>
   </section>
 
 
@@ -172,6 +132,7 @@
     <section class="sec" id="posts">
       <div class="sec__head"><h3 class="sec__title" data-h="posts" data-split data-i18n="sec_posts">posts</h3><p data-reveal data-i18n="d_posts">Cada nicho, uma nova ideia.</p></div>
       <div class="grid grid--posts" id="gPosts"><figure class="pre"><img src="assets/pizza-combo.webp" alt="Pizza Company — Combo — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pizza Company — Combo</figcaption></figure><figure class="pre"><img src="assets/lanterns.webp" alt="Pôster Lanterns — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pôster Lanterns</figcaption></figure><figure class="pre"><img src="assets/capim-leao.webp" alt="Capim Leão — Happy hour — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Capim Leão — Happy hour</figcaption></figure><figure class="pre"><img src="assets/nosso-lar-historia.webp" alt="Nosso Lar — Nossa história — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Nosso Lar — Nossa história</figcaption></figure><figure class="pre"><img src="assets/poster-escocia-brasil.jpg" alt="Escócia x Brasil — post para redes sociais" width="736" height="920" loading="lazy"><figcaption>Escócia x Brasil</figcaption></figure><figure class="pre"><img src="assets/bem-estar.webp" alt="Design para bem-estar — post para redes sociais" width="1080" height="1440" loading="lazy"><figcaption>Design para bem-estar</figcaption></figure><figure class="pre"><img src="assets/bleach.webp" alt="Pôster Bleach — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pôster Bleach</figcaption></figure><figure class="pre"><img src="assets/velho-chico-rodizio.jpg" alt="Velho Chico — Rodízio — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Velho Chico — Rodízio</figcaption></figure><figure class="pre"><img src="assets/babi-pais.webp" alt="Babi — Dia dos Pais — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Babi — Dia dos Pais</figcaption></figure><figure class="pre"><img src="assets/contador.webp" alt="Unimogi — Dia do Contador — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Unimogi — Dia do Contador</figcaption></figure><figure class="pre"><img src="assets/declinio.webp" alt="Pôster Declínio de um Homem — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pôster Declínio de um Homem</figcaption></figure><figure class="pre"><img src="assets/poster-brasil-marrocos.jpg" alt="Brasil x Marrocos — post para redes sociais" width="736" height="920" loading="lazy"><figcaption>Brasil x Marrocos</figcaption></figure><figure class="pre"><img src="assets/pao-alho.webp" alt="Espetinhos do Victor — Festival — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Espetinhos do Victor — Festival</figcaption></figure><figure class="pre"><img src="assets/nosso-lar-terapias.webp" alt="Nosso Lar — Terapias — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Nosso Lar — Terapias</figcaption></figure><figure class="pre"><img src="assets/ferramentas.webp" alt="Ferramentas que uso — post para redes sociais" width="1200" height="1500" loading="lazy"><figcaption>Ferramentas que uso</figcaption></figure><figure class="pre"><img src="assets/pizza-delivery.webp" alt="Pizza Company — Delivery — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pizza Company — Delivery</figcaption></figure><figure class="pre"><img src="assets/valorant.webp" alt="Pôster Valorant — LOUD — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Pôster Valorant — LOUD</figcaption></figure><figure class="pre"><img src="assets/nosso-lar-historia-nova.jpg" alt="Nosso Lar — Nossa história (nova versão) — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Nosso Lar — Nossa história (nova versão)</figcaption></figure><figure class="pre"><img src="assets/combo-casal.webp" alt="Velho Chico — Combo casal — post para redes sociais" width="1122" height="1402" loading="lazy"><figcaption>Velho Chico — Combo casal</figcaption></figure><figure class="pre"><img src="assets/poster-matheus-cunha.jpg" alt="Matheus Cunha — post para redes sociais" width="736" height="920" loading="lazy"><figcaption>Matheus Cunha</figcaption></figure><figure class="pre"><img src="assets/nosso-lar-vaga.webp" alt="Nosso Lar — Fonoaudiologia — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Nosso Lar — Fonoaudiologia</figcaption></figure><figure class="pre"><img src="assets/velho-chico-delivery.jpg" alt="Velho Chico — Delivery — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Velho Chico — Delivery</figcaption></figure><figure class="pre"><img src="assets/victor-rodizio.webp" alt="Espetinhos do Victor — Rodízio — post para redes sociais" width="1200" height="1500" loading="lazy"><figcaption>Espetinhos do Victor — Rodízio</figcaption></figure><figure class="pre"><img src="assets/design-silencio.jpg" alt="O cuidado começa no silêncio — post para redes sociais" width="1080" height="1440" loading="lazy"><figcaption>O cuidado começa no silêncio</figcaption></figure><figure class="pre"><img src="assets/barrankos-localizacao.webp" alt="Barranko’s — Localização — post para redes sociais" width="1080" height="1350" loading="lazy"><figcaption>Barranko’s — Localização</figcaption></figure></div>
+      <button class="more" id="morePosts" type="button" hidden></button>
     </section>
     <section class="sec" id="videos">
       <div class="sec__head"><h3 class="sec__title" data-h="videos" data-split data-i18n="sec_videos">vídeos</h3><p data-reveal data-i18n="d_videos">Histórias em movimento.</p></div>
@@ -185,6 +146,36 @@
       <div class="sec__head"><h3 class="sec__title" data-h="identidades" data-split data-i18n="sec_ids">identidades</h3><p data-reveal data-i18n="d_ids">Marcas com personalidade.</p></div>
       <div class="grid grid--ids" id="gIds"><figure class="pre"><img src="assets/identidade-cartazon.jpg" alt="Identidade visual CartazON — Tecnologia para o varejo" width="1200" height="900" loading="lazy"><figcaption><a href="identidades/cartazon/">CartazON — Tecnologia para o varejo: apresentação da marca</a></figcaption></figure><figure class="pre"><img src="assets/identidade-muving.jpg" alt="Identidade visual Muving — Agência de Marketing" width="1200" height="900" loading="lazy"><figcaption><a href="identidades/muving/">Muving — Agência de Marketing: apresentação da marca</a></figcaption></figure><figure class="pre"><img src="assets/identidade-barrankos.webp" alt="Identidade visual Barranko’s" width="1200" height="900" loading="lazy"><figcaption>Barranko’s</figcaption></figure><figure class="pre"><img src="assets/identidade-flor.webp" alt="Identidade visual Flor de Brasa" width="1200" height="900" loading="lazy"><figcaption>Flor de Brasa</figcaption></figure><figure class="pre"><img src="assets/identidade-victor.webp" alt="Identidade visual Espetinhos do Victor" width="1200" height="900" loading="lazy"><figcaption>Espetinhos do Victor</figcaption></figure><figure class="pre"><img src="assets/identidade-barans.webp" alt="Identidade visual Baran’s" width="1200" height="900" loading="lazy"><figcaption>Baran’s</figcaption></figure></div>
     </section>
+  </section>
+
+  <!-- faixas cruzadas de serviços -->
+  <section class="bands" aria-label="Serviços">
+    <div class="band band--y"><div class="band__track" id="bandA"></div></div>
+    <div class="band band--p"><div class="band__track" id="bandB"></div></div>
+  </section>
+
+  <!-- sobre mim -->
+  <section class="about" id="sobre">
+    <!-- objetos 3D flutuando nas laterais (computador) -->
+    <div class="about__float about__float--l" aria-hidden="true"><span class="obj obj--big" data-obj="headphones"></span></div>
+    <div class="about__float about__float--r" aria-hidden="true"><span class="obj obj--big" data-obj="computer"></span></div>
+    <div class="about__center">
+      <h1 class="kicker" data-h="sobre" data-i18n="about_label" data-reveal>sobre mim</h1>
+      <p class="about__text" id="aboutText" data-i18n-html="about">Sou o Pedro. Há mais de <b class="c-yellow">6 anos</b> transformo ideias em marcas com presença. Conecto <b class="c-red">design</b>, <b class="c-purple">estratégia</b> e tecnologia para cuidar de cada detalhe da sua comunicação, do primeiro post ao site no ar. Hoje também toco o Cravo creative studio.</p>
+      <dl class="facts" id="facts"><div><dt>anos criando marcas</dt><dd>6+</dd></div><div><dt>estúdios: peagá criativo e Cravo</dt><dd>2</dd></div><div><dt>ferramentas no dia a dia</dt><dd>7</dd></div></dl>
+      <h3 class="skills__title" data-i18n="tools_title" data-reveal>ferramentas</h3>
+      <!-- ferramentas girando em órbita 3D -->
+      <div class="orbit" id="orbit">
+        <i class="orbit__floor" aria-hidden="true"></i>
+        <div class="orbit__ring"><ul class="chips chips--tools" id="tools"><li><img src="assets/icons/photoshop.svg" alt="" width="22" height="22" loading="lazy">Photoshop</li><li><img src="assets/icons/illustrator.svg" alt="" width="22" height="22" loading="lazy">Illustrator</li><li><img src="assets/icons/figma.svg" alt="" width="22" height="22" loading="lazy">Figma</li><li><img src="assets/icons/canva.svg" alt="" width="22" height="22" loading="lazy">Canva</li><li><img src="assets/icons/capcut.svg" alt="" width="22" height="22" loading="lazy">CapCut</li><li><img src="assets/icons/chatgpt.svg" alt="" width="22" height="22" loading="lazy">ChatGPT</li><li><img src="assets/icons/claude.svg" alt="" width="22" height="22" loading="lazy">Claude</li></ul></div>
+      </div>
+      <p class="orbit__hint" data-i18n="orbit_hint">arraste para girar</p>
+    </div>
+    <div class="about__svc">
+      <h3 class="skills__title" data-i18n="svc_title" data-reveal>o que eu faço</h3>
+      <ul class="svc" id="svc"><li><span class="svc__name">Design &amp; Social Media</span> <span class="svc__desc">Cada nicho, uma nova ideia.</span></li><li><span class="svc__name">Edição &amp; Captação</span> <span class="svc__desc">Do primeiro frame ao último detalhe.</span></li><li><span class="svc__name">Sites &amp; Landing Pages</span> <span class="svc__desc">Presença além do feed.</span></li><li><span class="svc__name">Identidade Visual</span> <span class="svc__desc">Marcas com personalidade.</span></li><li><span class="svc__name">Gestão completa</span> <span class="svc__desc">Estratégia, tráfego pago e IA aplicada.</span></li></ul>
+    </div>
+    <div class="svc__float" aria-hidden="true"><img alt="" id="svcImg"><div class="svc__chips" id="svcChips"></div></div>
   </section>
 
   <!-- agência: portal para o site da Cravo (mesmo domínio, em /cravo/) -->

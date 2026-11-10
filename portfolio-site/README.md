@@ -15,7 +15,8 @@ npx http-server . -p 5177 -c-1
 
 1. Edite `data.js` (posts, vídeos, sites, identidades, textos e títulos das páginas para o Google).
 2. Para mudar o HTML, edite `page.template.html`. **Não** edite `index.html` nem as pastas `posts/`, `videos/`... — elas são geradas.
-3. Rode `node build.cjs`. Ele recria a home, as páginas com link próprio (`/posts/`, `/videos/`, `/sites/`, `/identidades/`, `/trabalhos/`, `/sobre/`, `/contato/`), o `404.html`, `sitemap.xml`, `robots.txt`, `llms.txt` e `site.webmanifest`.
+3. Se adicionou posts ou identidades, rode `node thumbs.cjs` para gerar as miniaturas leves (`assets/thumbs/`), usadas nas grades e na esteira da hero.
+4. Rode `node build.cjs`. Ele recria a home, as páginas com link próprio (`/posts/`, `/videos/`, `/sites/`, `/identidades/`, `/trabalhos/`, `/sobre/`, `/contato/`), o `404.html`, `sitemap.xml`, `robots.txt`, `llms.txt` e `site.webmanifest`.
 
 ## Publicar
 
@@ -27,6 +28,7 @@ O domínio usado no SEO está em `data.js` (`site_url`). Se mudar, rode `node bu
 ## Pastas que vêm de outros projetos
 
 - `cravo/`: cópia do site da Cravo creative studio (projeto em `Documents\Codex\2026-09-24\seguindo-a-mimha-identidade-x20\outputs\cravo`), gerada com os links ajustados para `/cravo/`. O `cravo/hero-fit.js` foi adicionado aqui para a imagem do estúdio não cobrir os botões da hero.
+- `identidades/cartazon/`: manual da marca CartazON. Os slides (`slides/` e `thumbs/`) foram gerados do PDF `CartazONManualdaMarca.pdf`; a página é o `index.html` dessa pasta.
 - `identidades/muving/`: cópia da apresentação da Muving (projeto em `C:\Users\pedro\muving-brand-showcase`), com os caminhos ajustados para `/identidades/muving/`.
 
 Ao mudar algo nesses projetos, é preciso gerar a cópia de novo e substituir a pasta.

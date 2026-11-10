@@ -30,9 +30,11 @@
   const route = routeFromPath() || (ROUTES[root.dataset.route] ? root.dataset.route : '');
   let current = route, lockUntil = route ? performance.now() + 4000 : 0; // link direto: não troca o endereço antes de chegar na seção
   const lockSync = ms => { lockUntil = Math.max(lockUntil, performance.now() + ms); };
+  let onRoute = () => {};
   function setURL(r, push) {
     if (!ROUTES[r] && r !== '') return;
     current = r;
+    onRoute(r);
     document.title = ROUTES[r].title;
     const u = BASE_PATH + (r ? r + '/' : '');
     if (location.pathname === u) return;
@@ -73,45 +75,99 @@
     e.preventDefault();
     scrollToTarget(el);
   });
-  addEventListener('popstate', () => { const r = routeFromPath(); lockSync(1700); scrollToTarget(routeTarget(r)); current = r; document.title = ROUTES[r].title; });
+  addEventListener('popstate', () => { const r = routeFromPath(); lockSync(1700); scrollToTarget(routeTarget(r)); current = r; onRoute(r); document.title = ROUTES[r].title; });
   $('#toTop').addEventListener('click', () => goRoute('', true));
 
   /* ------------------------------------------------ seções de trabalho */
   const arrow = '<i aria-hidden="true">↗</i>';
   const host = u => u.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
+  /* seleção: nome em cima e medida embaixo, como num programa de design */
+  const sel = (name, size) => `<span class="sel__name" aria-hidden="true">${esc(name)}</span><span class="sel__size" aria-hidden="true">${esc(size)}</span>`;
+  const sizeOf = (g, it) => (g === 'videos' ? '9:16' : `${it.w} × ${it.h}`);
+  const POSTS_FIRST = 12; // os demais aparecem em "ver todos"
   $('#gPosts').innerHTML = D.posts.map((it, i) =>
-    `<button type="button" class="card" data-group="posts" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
-      <img src="${it.src}" alt="${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
-      <span class="card__cap">${esc(it.title)}${arrow}</span></button>`).join('');
+    `<button type="button" class="card sel" data-group="posts" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}"${i >= POSTS_FIRST ? ' hidden' : ''}>
+      <span class="card__media"><img src="${it.thumb}" alt="${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
+      <span class="card__cap">${esc(it.title)}${arrow}</span></span>${sel(it.title, sizeOf('posts', it))}</button>`).join('');
   $('#gVideos').innerHTML = D.videos.map((it, i) =>
     `<div class="vcard" data-group="videos" data-i="${i}" data-cursor="cur_play" role="button" tabindex="0" aria-label="${esc(it.title)}">
-      <div class="card"><img src="${it.src}" alt="${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
-      <span class="vcard__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></div>
+      <div class="card sel"><span class="card__media"><img src="${it.src}" alt="${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
+      <span class="vcard__play" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span></span>${sel(it.title, sizeOf('videos', it))}</div>
       <p class="vcard__title">${esc(it.title)}</p></div>`).join('');
   $('#gSites').innerHTML = D.sites.map((it, i) =>
-    `<button type="button" class="browser" data-group="sites" data-i="${i}" data-cursor="cur_site" aria-label="${esc(it.title)}">
+    `<button type="button" class="browser sel" data-group="sites" data-i="${i}" data-cursor="cur_site" aria-label="${esc(it.title)}">
       <span class="browser__top"><i></i><i></i><i></i><span class="browser__url" ${it.url ? '' : 'data-soon'}>${it.url ? esc(host(it.url)) : ''}</span></span>
       <span class="browser__shot"><img src="${it.long}" alt="Prévia do site ${esc(it.title)}" width="${it.lw}" height="${it.lh}" loading="lazy" decoding="async"><span class="browser__go" data-preview></span></span>
-      <span class="browser__meta"><span class="browser__title">${esc(it.title)}</span><span class="browser__kind">${esc(it.kind)}</span></span></button>`).join('');
+      <span class="browser__meta"><span class="browser__title">${esc(it.title)}</span><span class="browser__kind">${esc(it.kind)}</span></span>${sel(it.title, sizeOf('sites', it))}</button>`).join('');
   $('#gIds').innerHTML = D.ids.map((it, i) => it.url
-    ? `<a class="card card--pres" href="${it.url}" target="_blank" rel="noopener" data-cursor="cur_pres" aria-label="${esc(it.title)}: ${esc(t('see_pres'))}">
-      <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
+    ? `<a class="card card--pres sel" href="${it.url}" target="_blank" rel="noopener" data-cursor="cur_pres" aria-label="${esc(it.title)}: ${esc(t('see_pres'))}">
+      <span class="card__media"><img src="${it.thumb}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
       <span class="card__tag" data-pres-tag="${it.tag || 'pres_tag'}"></span>
-      <span class="card__cap">${esc(it.title)}${arrow}</span></a>`
-    : `<button type="button" class="card" data-group="ids" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
-      <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
-      <span class="card__cap">${esc(it.title)}${arrow}</span></button>`).join('');
+      <span class="card__cap">${esc(it.title)}${arrow}</span></span>${sel(it.title, sizeOf('ids', it))}</a>`
+    : `<button type="button" class="card sel" data-group="ids" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
+      <span class="card__media"><img src="${it.thumb}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
+      <span class="card__cap">${esc(it.title)}${arrow}</span></span>${sel(it.title, sizeOf('ids', it))}</button>`).join('');
   $('#cPosts').textContent = D.posts.length;
   $('#cVideos').textContent = D.videos.length;
   $('#cSites').textContent = D.sites.length;
   $('#cIds').textContent = D.ids.length;
+  const moreBtn = $('#morePosts');
+  moreBtn.hidden = D.posts.length <= POSTS_FIRST;
+  moreBtn.addEventListener('click', () => {
+    const rest = $$('#gPosts .card[hidden]');
+    rest.forEach(c => { c.hidden = false; });
+    moreBtn.hidden = true;
+    gsap.fromTo(rest, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out', stagger: 0.05, overwrite: true });
+    ScrollTrigger.refresh();
+    if (rest[0]) rest[0].focus({ preventScroll: true });
+  });
+
+  /* ------------------------------------------------ esteira da hero: trabalhos reais passando */
+  const REEL = [['posts', 0], ['sites', 1], ['posts', 1], ['videos', 1], ['ids', 0], ['posts', 7], ['videos', 0], ['posts', 6], ['sites', 2], ['ids', 1],
+    ['posts', 4], ['videos', 5], ['posts', 16], ['sites', 0], ['posts', 12], ['ids', 3]];
+  const reelEl = $('#reel'), reelTrack = $('#reelTrack');
+  const reel = { x: 0, w: 1, speed: 0, fling: 0, drag: false, hover: false, moved: 0, lx: 0, visible: true };
+  function buildReel() {
+    const lists = { posts: D.posts, videos: D.videos, sites: D.sites, ids: D.ids };
+    const one = hiddenCopy => REEL.map(([g, i]) => {
+      const it = lists[g][i];
+      if (!it) return '';
+      const ar = g === 'videos' ? 9 / 16 : g === 'sites' ? 16 / 10 : g === 'ids' ? 4 / 3 : it.w / it.h;
+      const img = g === 'posts' || g === 'ids' ? it.thumb : it.src;
+      const inner = `<span class="reel__media"${g === 'sites' ? ' data-top' : ''}><img src="${img}" alt="" draggable="false" decoding="async">${g === 'videos' ? '<span class="reel__play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>' : ''}</span>${sel(t('k_' + g) + ' · ' + it.title, sizeOf(g, it))}`;
+      const common = `class="reel__card sel" style="--ar:${ar.toFixed(4)}" aria-label="${esc(it.title)}"${hiddenCopy ? ' tabindex="-1" aria-hidden="true"' : ''}`;
+      return g === 'ids' && it.url
+        ? `<a ${common} href="${it.url}" target="_blank" rel="noopener" data-cursor="cur_pres" draggable="false">${inner}</a>`
+        : `<button type="button" ${common} data-group="${g}" data-i="${i}" data-cursor="${g === 'videos' ? 'cur_play' : g === 'sites' ? 'cur_site' : 'cur_view'}">${inner}</button>`;
+    }).join('');
+    reelTrack.innerHTML = one(false) + one(true);
+    const n = reelTrack.children.length / 2;
+    reel.w = reelTrack.children[n].offsetLeft - reelTrack.children[0].offsetLeft || 1;
+    // telas muito largas: mais uma cópia para nunca aparecer buraco
+    if (reel.w < innerWidth * 1.1) reelTrack.insertAdjacentHTML('beforeend', one(true));
+  }
+  new IntersectionObserver(es => { reel.visible = es[0].isIntersecting; }).observe(reelEl);
+  reelEl.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') reel.hover = true; });
+  reelEl.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') reel.hover = false; });
+  reelEl.addEventListener('pointerdown', e => { if (e.button) return; reel.drag = true; reel.moved = 0; reel.fling = 0; reel.lx = e.clientX; });
+  addEventListener('pointermove', e => {
+    if (!reel.drag) return;
+    const dx = e.clientX - reel.lx;
+    reel.lx = e.clientX; reel.moved += Math.abs(dx); reel.x += dx; reel.fling = dx;
+  }, { passive: true });
+  const reelUp = () => { reel.drag = false; };
+  addEventListener('pointerup', reelUp);
+  addEventListener('pointercancel', reelUp);
+  // se arrastou, o clique não abre o trabalho
+  reelEl.addEventListener('click', e => { if (reel.moved > 8) { e.preventDefault(); e.stopPropagation(); reel.moved = 0; } }, true);
+  reelEl.addEventListener('dragstart', e => e.preventDefault());
 
   /* ------------------------------------------------ serviços: um efeito diferente para cada linha */
   const SVC = [
     { route: 'posts', mode: 'posts' },
     { route: 'videos', mode: 'video', img: 'assets/yt-_k_vZQakGjU-max.jpg' },
     { route: 'sites', mode: 'site', img: 'assets/preview-lucas.jpg' },
-    { route: 'identidades', mode: 'id', img: 'assets/identidade-flor.webp' },
+    { route: 'identidades', mode: 'id', img: 'assets/thumbs/identidade-flor.jpg' },
     { route: 'contato', mode: 'mgmt' }
   ];
   function buildSvc() {
@@ -127,7 +183,7 @@
   const postImgs = [];
   function stopCycle() { clearInterval(cycleId); cycleId = null; }
   function startCycle() {
-    if (!postImgs.length) D.posts.forEach(p => { const im = new Image(); im.decoding = 'async'; im.src = p.src; postImgs.push(im); });
+    if (!postImgs.length) D.posts.forEach(p => { const im = new Image(); im.decoding = 'async'; im.src = p.thumb; postImgs.push(im); });
     stopCycle();
     const show = () => {
       for (let k = 0; k < postImgs.length; k++) {
@@ -269,7 +325,6 @@
   /* ------------------------------------------------ sobre mim: dados, habilidades e ferramentas */
   function buildAbout() {
     $('#facts').innerHTML = t('facts').map(([big, label]) => `<div><dt>${esc(label)}</dt><dd>${esc(big)}</dd></div>`).join('');
-    $('#skills').innerHTML = t('skills').map(s => `<li>${esc(s)}</li>`).join('');
     $('#tools').innerHTML = D.tools.map(s => `<li><img src="${s.icon}" alt="" width="22" height="22" loading="lazy">${esc(s.name)}</li>`).join('');
   }
 
@@ -303,14 +358,13 @@
     gsap.set('[data-reveal]', { autoAlpha: 0, y: 30 });
     const show = els => gsap.to(els, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1, overwrite: 'auto' });
     ScrollTrigger.batch('[data-reveal]', { start: 'top 90%', once: true, onEnter: show, onEnterBack: show });
-    const cards = $$('.grid--posts .card, .vcard, .browser, .grid--ids .card, .svc li');
+    const cards = $$('.grid--posts .card:not([hidden]), .vcard, .browser, .grid--ids .card, .svc li');
     gsap.set(cards, { autoAlpha: 0, y: 60 });
     const pop = els => gsap.fromTo(els,
       { autoAlpha: 0, y: 60, clipPath: 'inset(18% 0% 0% 0% round 14px)' },
       { autoAlpha: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 14px)', duration: 1.1, ease: 'expo.out', stagger: 0.08, clearProps: 'clipPath', overwrite: 'auto' });
     ScrollTrigger.batch(cards, { start: 'top 94%', once: true, onEnter: pop, onEnterBack: pop });
     // hero sobe um pouco mais devagar que o scroll
-    gsap.to('.hero__stickers', { yPercent: -25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero__title', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     // sobre: os dados e as habilidades aparecem um a um
     gsap.from('#facts > div', { autoAlpha: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.1, scrollTrigger: { trigger: '#facts', start: 'top 88%', once: true } });
@@ -326,10 +380,6 @@
     gsap.from('.about__float', { scale: 0, rotate: -30, duration: 1.2, ease: 'back.out(2)', stagger: 0.15, scrollTrigger: { trigger: '.about', start: 'top 70%', once: true } });
     gsap.to('.about__float--l', { yPercent: -60, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
     gsap.to('.about__float--r', { yPercent: 50, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: true } });
-    ['#skills'].forEach(sel => gsap.from(sel + ' li', {
-      autoAlpha: 0, scale: 0.4, y: 20, rotate: () => gsap.utils.random(-14, 14), duration: 0.7, ease: 'back.out(2)', stagger: 0.06,
-      scrollTrigger: { trigger: sel, start: 'top 90%', once: true }
-    }));
     // faixas giram um pouco com o scroll
     gsap.fromTo('.band--y', { rotate: -6 }, { rotate: -1, ease: 'none', scrollTrigger: { trigger: '.bands', start: 'top bottom', end: 'bottom top', scrub: true } });
     gsap.fromTo('.band--p', { rotate: 5 }, { rotate: 1, ease: 'none', scrollTrigger: { trigger: '.bands', start: 'top bottom', end: 'bottom top', scrub: true } });
@@ -374,6 +424,9 @@
     $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     buildSvc();
     buildAbout();
+    buildReel();
+    moreBtn.textContent = t('see_all').replace('{n}', D.posts.length);
+    onRoute(current);
     buildBands();
     revealSplits();
     ScrollTrigger.refresh();
@@ -382,7 +435,7 @@
     lang = b.dataset.lang;
     try { localStorage.setItem('pc-lang', lang); } catch (e) {}
     applyLang();
-    $$('#svc li, #skills li, #facts > div').forEach(li => gsap.set(li, { autoAlpha: 1, y: 0, scale: 1, rotate: 0 }));
+    $$('#svc li, #facts > div').forEach(li => gsap.set(li, { autoAlpha: 1, y: 0, scale: 1, rotate: 0 }));
   }));
 
   /* ------------------------------------------------ cursor triângulo */
@@ -423,7 +476,8 @@
   const padX = () => parseFloat(getComputedStyle(barIn).paddingLeft) * 2 + 2;
   const gapX = () => parseFloat(getComputedStyle(barIn).columnGap) || 0;
   const fullW = () => bar.clientWidth - parseFloat(getComputedStyle(bar).paddingLeft) * 2;
-  const miniW = () => brandEl.offsetWidth + padX();
+  const idEl = $('.bar__id'), whereEl = $('#barWhere');
+  const miniW = () => idEl.offsetWidth + padX();
   const openW = () => Math.min(fullW(), miniW() + shown().reduce((s, el) => s + el.offsetWidth + gapX(), 0));
   function setBar(state) {
     if (state === barState) return;
@@ -444,6 +498,14 @@
       gsap.to(barItems, { autoAlpha: 1, x: 0, scale: 1, duration: 0.5, ease: 'back.out(1.8)', stagger: 0.06, delay: 0.12 });
     }
   }
+  const WHERE = { trabalhos: 'nav_work', posts: 'sec_posts', videos: 'sec_videos', sites: 'sec_sites', identidades: 'sec_ids', sobre: 'nav_about', contato: 'nav_contact' };
+  onRoute = r => {
+    const txt = WHERE[r] ? t(WHERE[r]) : '';
+    if (whereEl.textContent === txt) return;
+    whereEl.textContent = txt;
+    if (barState === 'mini') gsap.to(barIn, { width: miniW(), duration: 0.5, ease: 'expo.out', overwrite: true });
+    else if (barState === 'open') gsap.to(barIn, { width: openW(), duration: 0.5, ease: 'expo.out', overwrite: true });
+  };
   let barHover = false;
   barIn.addEventListener('pointerenter', e => { if (e.pointerType !== 'mouse') return; barHover = true; if (barState === 'mini') setBar('open'); });
   barIn.addEventListener('pointerleave', e => { if (e.pointerType !== 'mouse') return; barHover = false; if (barState === 'open') setBar('mini'); });
@@ -467,6 +529,16 @@
     }
     const max = document.documentElement.scrollHeight - innerHeight;
     prog.style.transform = `scaleX(${max > 0 ? clamp(y / max, 0, 1) : 0})`;
+    if (reel.visible) {
+      if (!reel.drag) {
+        reel.speed += ((reel.hover ? 0 : 42) - reel.speed) * 0.06;
+        reel.x -= reel.speed * dt / 1000 + Math.abs(velS) * 0.25;
+        reel.x += reel.fling; reel.fling *= 0.93;
+      }
+      if (reel.x <= -reel.w) reel.x += reel.w;
+      if (reel.x > 0) reel.x -= reel.w;
+      reelTrack.style.transform = `translate3d(${reel.x.toFixed(2)}px,0,0)`;
+    }
     if (reduce) return;
     bands.forEach(b => {
       b.x -= b.dir * (70 * dt / 1000 + Math.abs(velS) * 0.35);
@@ -559,17 +631,6 @@
       const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
       if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) stepLB(dx < 0 ? 1 : -1);
     }, { passive: true });
-  }
-
-  /* inclinação 3D nos cards */
-  if (fine && !reduce) {
-    $$('.grid--posts .card, .grid--ids .card').forEach(el => {
-      el.addEventListener('pointermove', e => {
-        const r = el.getBoundingClientRect();
-        gsap.to(el, { rotationY: ((e.clientX - r.left) / r.width - 0.5) * 10, rotationX: -((e.clientY - r.top) / r.height - 0.5) * 10, transformPerspective: 900, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
-      });
-      el.addEventListener('pointerleave', () => gsap.to(el, { rotationY: 0, rotationX: 0, duration: 0.9, ease: 'elastic.out(1,.6)', overwrite: 'auto' }));
-    });
   }
 
   /* ------------------------------------------------ órbita 3D das ferramentas: gira sozinha, inclina com o mouse e pode ser arrastada */
@@ -688,15 +749,6 @@
     return { boot: dur => gsap.to(st, { boot: 1, duration: dur || 1.6, ease: 'power2.out' }), done: () => { st.boot = 1; } };
   })();
 
-  /* adesivos seguem o mouse em profundidades diferentes */
-  if (fine) {
-    const movers = $$('.stk').map(el => ({ d: parseFloat(el.dataset.depth) || 1, x: gsap.quickTo(el, 'x', { duration: 1, ease: 'power3' }), y: gsap.quickTo(el, 'y', { duration: 1, ease: 'power3' }) }));
-    addEventListener('pointermove', e => {
-      const nx = e.clientX / innerWidth - 0.5, ny = e.clientY / innerHeight - 0.5;
-      movers.forEach(m => { m.x(nx * 60 * m.d); m.y(ny * 40 * m.d); });
-    }, { passive: true });
-  }
-
   /* ------------------------------------------------ entrada da hero (sem intro) */
   const barKids = [brandEl, ...barItems];
   let introDone = false;
@@ -707,8 +759,7 @@
     gsap.set(".hero__btns .btn", { autoAlpha: 0, y: 30 });
     gsap.set(barKids, { autoAlpha: 0, y: -20 });
     gsap.set(".dock", { autoAlpha: 0 });
-    gsap.set(".stk", { scale: 0, rotate: -30 });
-    gsap.set(".hero__spin", { autoAlpha: 0 });
+    gsap.set(".reel__card", { y: 140, autoAlpha: 0 });
   }
   function revealHero() {
     if (introDone) return;
@@ -722,8 +773,7 @@
       .to(barKids, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.06 }, 0.3)
       .to(".dock", { autoAlpha: 1, duration: 0.6 }, 0.9)
       .call(() => heroGrid.boot(1.8), null, 0)
-      .to(".stk", { scale: 1, rotate: 0, duration: 1.1, ease: "back.out(2.2)", stagger: 0.09 }, 0.85)
-      .to(".hero__spin", { autoAlpha: 1, duration: 0.8 }, 1.1)
+      .to(".reel__card", { y: 0, autoAlpha: 1, duration: 1.2, stagger: 0.045, clearProps: "transform,opacity,visibility" }, 0.55)
       .call(() => heroEl.classList.add("is-in"), null, 1.45)
 ;
   }
@@ -734,12 +784,13 @@
   setupReveals();
   setupSync();
   if (route) {
-    gsap.set([".hero .line__in", ".obj", ".hero__sub", ".hero__btns .btn", ...barKids, ".dock", ".stk", ".hero__spin"], { clearProps: "all" });
+    gsap.set([".hero .line__in", ".obj", ".hero__sub", ".hero__btns .btn", ...barKids, ".dock", ".reel__card"], { clearProps: "all" });
     heroEl.classList.add("is-in"); heroGrid.done(); introDone = true;
   }
   else revealHero();
-  addEventListener('resize', (() => { let id; return () => { clearTimeout(id); id = setTimeout(buildBands, 200); }; })());
+  addEventListener('resize', (() => { let id; return () => { clearTimeout(id); id = setTimeout(() => { buildBands(); buildReel(); }, 200); }; })());
   if (document.fonts) document.fonts.ready.then(() => { buildBands(); ScrollTrigger.refresh(); });
+  onRoute(current);
   addEventListener('load', () => ScrollTrigger.refresh());
 
   /* link direto (ex.: /videos/): já abre na seção */
