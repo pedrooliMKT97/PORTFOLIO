@@ -48,7 +48,7 @@ const pre = {
   POSTS: D.posts.map(p => `<figure class="pre"><img src="${p.src}" alt="${esc(p.title)} — post para redes sociais" width="${p.w}" height="${p.h}" loading="lazy"><figcaption>${esc(p.title)}</figcaption></figure>`).join(''),
   VIDEOS: D.videos.map(v => `<figure class="pre"><a href="${yt(v.yt)}"><img src="${v.src}" alt="${esc(v.title)} — vídeo" width="${v.w}" height="${v.h}" loading="lazy"></a><figcaption>${esc(v.title)}</figcaption></figure>`).join(''),
   SITES: D.sites.map(s => `<figure class="pre"><img src="${s.src}" alt="Prévia do site ${esc(s.title)}" width="${s.w}" height="${s.h}" loading="lazy"><figcaption>${s.url ? `<a href="${s.url}">${esc(s.title)}</a>` : esc(s.title)} — ${esc(s.kind)}</figcaption></figure>`).join(''),
-  IDS: D.ids.map(i => `<figure class="pre"><img src="${i.src}" alt="Identidade visual ${esc(i.title)}" width="${i.w}" height="${i.h}" loading="lazy"><figcaption>${i.url ? `<a href="${i.url}">${esc(i.title)}: apresentação interativa da marca</a>` : esc(i.title)}</figcaption></figure>`).join('')
+  IDS: D.ids.map(i => `<figure class="pre"><img src="${i.src}" alt="Identidade visual ${esc(i.title)}" width="${i.w}" height="${i.h}" loading="lazy"><figcaption>${i.url ? `<a href="${i.url}">${esc(i.title)}: apresentação da marca</a>` : esc(i.title)}</figcaption></figure>`).join('')
 };
 
 /* ---------- dados estruturados (schema.org) */
@@ -186,6 +186,7 @@ ${Object.keys(D.routes).map(r => `  <url>
     <priority>${r === '' ? '1.0' : ['trabalhos', 'sites', 'videos', 'posts'].includes(r) ? '0.9' : '0.7'}</priority>
 ${(routeImages[r] || []).map(src => `    <image:image><image:loc>${abs(src)}</image:loc></image:image>`).join('\n')}
   </url>`).join('\n')}
+${D.ids.filter(i => i.url).map(i => `  <url>\n    <loc>${abs(i.url)}</loc>\n    <lastmod>${TODAY}</lastmod>\n    <priority>0.6</priority>\n  </url>`).join('\n')}
 </urlset>
 `);
 
@@ -236,7 +237,7 @@ ${D.videos.map(v => `- ${v.title}: ${yt(v.yt)}`).join('\n')}
 
 ## Identidades visuais
 
-${D.ids.map(i => `- ${i.title}${i.url ? `: apresentação interativa em ${abs(i.url)}` : ''}`).join('\n')}
+${D.ids.map(i => `- ${i.title}${i.url ? `: apresentação da marca em ${abs(i.url)}` : ''}`).join('\n')}
 
 ## Posts para redes sociais
 

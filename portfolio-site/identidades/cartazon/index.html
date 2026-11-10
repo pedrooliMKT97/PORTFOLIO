@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CartazON — manual da marca | identidade visual por peagá criativo</title>
+<meta name="description" content="Manual da marca CartazON, tecnologia para o varejo: logotipo, símbolo, versões, paleta de cores, modo de usar e aplicações. Identidade visual criada por Pedro, do peagá criativo.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.pdrolidesigner.com.br/identidades/cartazon/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="peagá criativo">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="CartazON — manual da marca">
+<meta property="og:description" content="Logotipo, símbolo, cores e aplicações da marca CartazON. Identidade visual por peagá criativo.">
+<meta property="og:url" content="https://www.pdrolidesigner.com.br/identidades/cartazon/">
+<meta property="og:image" content="https://www.pdrolidesigner.com.br/identidades/cartazon/slides/p01.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#131315">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../../favicon.ico" sizes="48x48">
+<link rel="preload" as="image" href="slides/p01.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Manual da marca CartazON","description":"Identidade visual da CartazON, tecnologia para o varejo: logotipo, símbolo, versões, cores, modo de usar e aplicações.","url":"https://www.pdrolidesigner.com.br/identidades/cartazon/","image":"https://www.pdrolidesigner.com.br/identidades/cartazon/slides/p01.jpg","inLanguage":"pt-BR","creator":{"@type":"Person","name":"Pedro","url":"https://www.pdrolidesigner.com.br/sobre/"},"isPartOf":{"@type":"CollectionPage","name":"Identidade visual","url":"https://www.pdrolidesigner.com.br/identidades/"}}</script>
+<style>
+  :root { --ink: #131315; --ink2: #1c1c1f; --green: #003E24; --lime: #9CE700; --fg: #fffced; --muted: rgba(255, 252, 237, .6); --line: rgba(255, 252, 237, .14); --ease: cubic-bezier(.16, 1, .3, 1); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--ink); color: var(--fg); font-family: 'Bricolage Grotesque', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; border-radius: 6px; }
+  h1 { margin: 0; font-size: 1rem; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+  h1 span { color: var(--muted); font-weight: 600; }
+
+  .app { height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 14px clamp(14px, 2.4vw, 28px); }
+  .back { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .9rem; padding: .55rem 1rem; border-radius: 99px; border: 1px solid var(--line); transition: background-color .25s, color .25s, border-color .25s; }
+  .back:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+  .top__right { display: flex; align-items: center; gap: .5rem; }
+  .pill { font-weight: 700; font-size: .85rem; padding: .55rem 1rem; border-radius: 99px; border: 1px solid var(--line); transition: background-color .25s, color .25s, border-color .25s; }
+  .pill:hover, .pill[aria-pressed="true"] { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+
+  /* palco */
+  .stage { position: relative; min-height: 0; display: grid; place-items: center; padding: 0 clamp(14px, 5vw, 72px); }
+  .frame { position: relative; width: min(100%, calc((100dvh - 190px) * 16 / 9)); aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: var(--ink2); }
+  .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .frame img.is-out { z-index: 1; }
+  .frame img.is-in { z-index: 2; }
+  .hit { position: absolute; top: 0; bottom: 0; z-index: 3; width: 50%; }
+  .hit--prev { left: 0; cursor: w-resize; }
+  .hit--next { right: 0; cursor: e-resize; }
+  .arrow { position: absolute; top: 50%; z-index: 4; width: 46px; height: 46px; margin-top: -23px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); display: grid; place-items: center; font-size: 1.1rem; transition: background-color .25s, color .25s, border-color .25s, transform .4s var(--ease); }
+  .arrow:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); transform: scale(1.08); }
+  .arrow--prev { left: clamp(4px, 1.2vw, 16px); }
+  .arrow--next { right: clamp(4px, 1.2vw, 16px); }
+
+  /* rodapé: capítulos, contador e progresso */
+  .bottom { padding: 12px clamp(14px, 2.4vw, 28px) 16px; display: grid; gap: 10px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .chapters { display: flex; gap: .35rem; overflow-x: auto; scrollbar-width: none; }
+  .chapters::-webkit-scrollbar { display: none; }
+  .chap { flex: none; font-weight: 700; font-size: .82rem; padding: .45rem .85rem; border-radius: 99px; color: var(--muted); transition: background-color .25s, color .25s; }
+  .chap:hover { color: var(--fg); background: var(--ink2); }
+  .chap.is-active { background: var(--green); color: var(--lime); }
+  .count { flex: none; font-weight: 800; font-size: .95rem; font-variant-numeric: tabular-nums; }
+  .count span { color: var(--muted); font-weight: 600; }
+  .bar { height: 4px; border-radius: 4px; background: var(--ink2); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 100%; background: var(--lime); transform-origin: left; transform: scaleX(0); transition: transform .5s var(--ease); }
+
+  /* grade com todos os slides */
+  .grid { position: fixed; inset: 0; z-index: 20; background: var(--ink); overflow-y: auto; padding: 76px clamp(14px, 2.4vw, 28px) 28px; display: none; }
+  .grid.is-open { display: block; }
+  .grid ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; counter-reset: s; }
+  .grid li { counter-increment: s; }
+  .grid button { position: relative; display: block; width: 100%; border-radius: 10px; overflow: hidden; border: 2px solid transparent; transition: border-color .2s, transform .4s var(--ease); }
+  .grid button:hover { border-color: var(--lime); transform: translateY(-3px); }
+  .grid button[aria-current="true"] { border-color: var(--lime); }
+  .grid img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .grid button::after { content: counter(s, decimal-leading-zero); position: absolute; left: 8px; bottom: 8px; font-size: .72rem; font-weight: 800; padding: .2rem .5rem; border-radius: 99px; background: var(--ink); color: var(--fg); }
+  .grid__close { position: fixed; right: clamp(14px, 2.4vw, 28px); top: 14px; z-index: 21; }
+
+  /* celular em pé: os slides viram uma lista para rolar */
+  .list { display: none; }
+  @media (max-width: 760px) and (orientation: portrait) {
+    body { overflow: auto; }
+    .app { height: auto; display: block; }
+    .top { position: sticky; top: 0; z-index: 10; background: var(--ink); border-bottom: 1px solid var(--line); }
+    .stage, .bottom, #gridBtn, #playBtn, #fsBtn { display: none; }
+    h1 span { display: none; }
+    .list { display: grid; gap: 10px; list-style: none; margin: 0; padding: 12px 12px 40px; }
+    .list img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 10px; background: var(--ink2); }
+    .list__tip { font-size: .8rem; color: var(--muted); text-align: center; padding: 14px 12px 0; margin: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar i, .arrow, .grid button { transition-duration: .01ms; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <a class="back" href="../" aria-label="Voltar para identidades no portfólio peagá criativo">← <span>peagá criativo</span></a>
+    <h1>CartazON <span>· manual da marca</span></h1>
+    <div class="top__right">
+      <button class="pill" id="playBtn" type="button" aria-pressed="false">apresentar</button>
+      <button class="pill" id="gridBtn" type="button" aria-expanded="false">todos os slides</button>
+      <button class="pill" id="fsBtn" type="button">tela cheia</button>
+    </div>
+  </header>
+
+  <main class="stage" aria-roledescription="apresentação de slides" aria-label="Manual da marca CartazON">
+    <div class="frame" id="frame">
+      <img id="imgA" class="is-in" src="slides/p01.jpg" alt="Capa do manual da marca CartazON, tecnologia para o varejo" width="1920" height="1080">
+      <img id="imgB" class="is-out" alt="" width="1920" height="1080" aria-hidden="true">
+      <button class="hit hit--prev" id="hitPrev" type="button" tabindex="-1" aria-hidden="true"></button>
+      <button class="hit hit--next" id="hitNext" type="button" tabindex="-1" aria-hidden="true"></button>
+    </div>
+    <button class="arrow arrow--prev" id="prev" type="button" aria-label="Slide anterior">←</button>
+    <button class="arrow arrow--next" id="next" type="button" aria-label="Próximo slide">→</button>
+  </main>
+
+  <footer class="bottom">
+    <div class="row">
+      <nav class="chapters" id="chapters" aria-label="Capítulos"></nav>
+      <p class="count" aria-live="polite" style="margin:0"><b id="cur">01</b> <span>/ <span id="tot">31</span></span></p>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  </footer>
+
+  <!-- lista para celular em pé (e para quem lê sem JavaScript) -->
+  <p class="list__tip list">Role para ver os 31 slides. Deitando o celular, vira apresentação.</p>
+  <ol class="list" id="list"></ol>
+</div>
+
+<div class="grid" id="grid" role="dialog" aria-modal="true" aria-label="Todos os slides">
+  <button class="pill grid__close" id="gridClose" type="button">fechar ✕</button>
+  <ol id="gridList"></ol>
+</div>
+
+<script>
+(() => {
+  const TOTAL = 31;
+  /* capítulos do manual: [nome, primeiro slide] */
+  const CHAPTERS = [['capa', 1], ['logotipo', 3], ['versões', 10], ['cores', 14], ['modo de usar', 17], ['onde usar', 20], ['aplicações', 22]];
+  /* descrição de cada slide (para leitores de tela e buscadores) */
+  const ALT = ['Capa do manual da marca CartazON, tecnologia para o varejo', 'Sumário: logotipo, versões, cores, modo de usar, onde usar e aplicações', 'Capítulo 01: logotipo', 'Logotipo CartazON', 'Símbolo da CartazON: a letra C com um traço', 'Construção do logotipo com malha e medidas', 'Construção do símbolo com proporções e ângulo de 12 graus', 'Área de proteção do logotipo', 'Reduções mínimas do logotipo e do símbolo', 'Capítulo 02: versões', 'Versões do logotipo sobre fundos escuros, verdes, lime e claros', 'Versões do símbolo', 'Logotipo sobre os fundos da paleta', 'Capítulo 03: paleta de cores', 'Cores: grafite #131315, verde #003E24, lime #9CE700 e branco #FFFFFF', 'Proporção de uso das cores e combinações de texto', 'Capítulo 04: modo de usar', 'Faça: usos corretos do logotipo', 'Evite: usos incorretos do logotipo', 'Capítulo 05: onde usar', 'Onde usar: sinalização, papelaria, vestuário, brindes, embalagem, ambientação e frota', 'Capítulo 06: aplicações', 'Aplicação em sinalização: fachada e placas', 'Aplicação em papelaria: cartões e crachá', 'Aplicação em vestuário: camiseta, moletom e boné', 'Aplicação em brindes: caneca, sacola e garrafa', 'Aplicação em embalagem: caixa e sacola', 'Aplicação em ambientação: recepção e telas', 'Aplicação em frota: furgão adesivado', 'Painel com todas as aplicações da marca', 'Encerramento do manual da marca CartazON'];
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, '0');
+  const src = n => `slides/p${pad(n)}.jpg`;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const imgs = [$('imgA'), $('imgB')];
+  let front = 0, cur = 1, playing = null;
+
+  // capítulos, grade e lista
+  $('tot').textContent = TOTAL;
+  $('chapters').innerHTML = CHAPTERS.map(([n, s]) => `<button class="chap" type="button" data-go="${s}">${n}</button>`).join('');
+  $('gridList').innerHTML = Array.from({ length: TOTAL }, (_, i) => `<li><button type="button" data-go="${i + 1}" aria-label="Slide ${i + 1}: ${ALT[i]}"><img src="thumbs/p${pad(i + 1)}.jpg" alt="" loading="lazy" width="360" height="203"></button></li>`).join('');
+  $('list').innerHTML = Array.from({ length: TOTAL }, (_, i) => `<li><img src="${src(i + 1)}" alt="${ALT[i]}" loading="${i < 2 ? 'eager' : 'lazy'}" width="1920" height="1080"></li>`).join('');
+
+  function chapterOf(n) { let k = 0; CHAPTERS.forEach(([, s], i) => { if (n >= s) k = i; }); return k; }
+  function ui() {
+    $('cur').textContent = pad(cur);
+    $('bar').style.transform = `scaleX(${cur / TOTAL})`;
+    const k = chapterOf(cur);
+    document.querySelectorAll('.chap').forEach((c, i) => { c.classList.toggle('is-active', i === k); if (i === k) c.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
+    document.querySelectorAll('#gridList button').forEach((b, i) => b.setAttribute('aria-current', String(i + 1 === cur)));
+    history.replaceState(null, '', cur === 1 ? location.pathname : '#' + cur);
+    [cur - 1, cur + 1, cur + 2].forEach(n => { if (n >= 1 && n <= TOTAL) new Image().src = src(n); });
+  }
+  function go(n, dir) {
+    n = Math.max(1, Math.min(TOTAL, n));
+    if (n === cur) return;
+    dir = dir || (n > cur ? 1 : -1);
+    const out = imgs[front], inn = imgs[1 - front];
+    front = 1 - front;
+    cur = n;
+    inn.alt = ALT[n - 1]; inn.removeAttribute('aria-hidden');
+    out.setAttribute('aria-hidden', 'true');
+    inn.src = src(n);
+    inn.className = 'is-in'; out.className = 'is-out';
+    if (!reduce && inn.animate) {
+      // o slide novo entra por uma cortina na direção da navegação
+      inn.animate([{ clipPath: dir > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }], { duration: 520, easing: 'cubic-bezier(.65,0,.35,1)' });
+      out.animate([{ transform: 'none' }, { transform: `translateX(${dir > 0 ? -4 : 4}%)` }], { duration: 520, easing: 'cubic-bezier(.65,0,.35,1)' });
+    }
+    ui();
+  }
+  const step = d => go(cur + d, d);
+
+  function stop() { clearInterval(playing); playing = null; $('playBtn').setAttribute('aria-pressed', 'false'); $('playBtn').textContent = 'apresentar'; }
+  function play() {
+    if (playing) { stop(); return; }
+    if (cur === TOTAL) go(1, 1);
+    $('playBtn').setAttribute('aria-pressed', 'true'); $('playBtn').textContent = 'pausar';
+    playing = setInterval(() => { if (cur >= TOTAL) stop(); else step(1); }, 4200);
+  }
+  const manual = fn => (...a) => { if (playing) stop(); fn(...a); };
+
+  $('next').addEventListener('click', manual(() => step(1)));
+  $('prev').addEventListener('click', manual(() => step(-1)));
+  $('hitNext').addEventListener('click', manual(() => step(1)));
+  $('hitPrev').addEventListener('click', manual(() => step(-1)));
+  $('playBtn').addEventListener('click', play);
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-go]');
+    if (!b) return;
+    if (playing) stop();
+    go(+b.dataset.go);
+    toggleGrid(false);
+  });
+  function toggleGrid(open) {
+    $('grid').classList.toggle('is-open', open);
+    $('gridBtn').setAttribute('aria-expanded', String(open));
+    if (open) { const c = document.querySelector('#gridList [aria-current="true"]'); if (c) { c.scrollIntoView({ block: 'center' }); c.focus({ preventScroll: true }); } }
+    else if (document.activeElement && $('grid').contains(document.activeElement)) $('gridBtn').focus();
+  }
+  $('gridBtn').addEventListener('click', () => toggleGrid(true));
+  $('gridClose').addEventListener('click', () => toggleGrid(false));
+  $('fsBtn').addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+  });
+  document.addEventListener('fullscreenchange', () => { $('fsBtn').textContent = document.fullscreenElement ? 'sair da tela cheia' : 'tela cheia'; });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape') { toggleGrid(false); return; }
+    if ($('grid').classList.contains('is-open')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') manual(() => step(1))();
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') manual(() => step(-1))();
+    else if (e.key === 'Home') manual(() => go(1))();
+    else if (e.key === 'End') manual(() => go(TOTAL))();
+    else if (e.key === ' ' && !e.target.closest('button, a')) { e.preventDefault(); play(); }
+  });
+  // arrastar com o dedo
+  let sx = 0, sy = 0;
+  $('frame').addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  $('frame').addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) manual(() => step(dx < 0 ? 1 : -1))();
+  }, { passive: true });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) stop(); });
+
+  // link direto para um slide: /identidades/cartazon/#12
+  const h = parseInt(location.hash.slice(1), 10);
+  if (h > 1 && h <= TOTAL) { cur = h; imgs[0].src = src(h); imgs[0].alt = ALT[h - 1]; }
+  addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n >= 1 && n <= TOTAL) go(n); });
+  ui();
+})();
+</script>
+</body>
+</html>

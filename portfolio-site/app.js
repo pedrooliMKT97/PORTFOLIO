@@ -96,7 +96,7 @@
   $('#gIds').innerHTML = D.ids.map((it, i) => it.url
     ? `<a class="card card--pres" href="${it.url}" target="_blank" rel="noopener" data-cursor="cur_pres" aria-label="${esc(it.title)}: ${esc(t('see_pres'))}">
       <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
-      <span class="card__tag" data-pres-tag></span>
+      <span class="card__tag" data-pres-tag="${it.tag || 'pres_tag'}"></span>
       <span class="card__cap">${esc(it.title)}${arrow}</span></a>`
     : `<button type="button" class="card" data-group="ids" data-i="${i}" data-cursor="cur_view" aria-label="${esc(it.title)}">
       <img src="${it.src}" alt="Identidade visual ${esc(it.title)}" width="${it.w}" height="${it.h}" loading="lazy" decoding="async">
@@ -367,7 +367,7 @@
     $$('.hero__title [data-i18n]').forEach(el => { el.innerHTML = el.textContent.split(' ').map(w => `<span class="hw">${Array.from(w).map(c => `<span class="hc">${esc(c)}</span>`).join('')}</span>`).join(' '); });
     $$('[data-preview]').forEach(s => { s.textContent = t('see_preview'); });
     $$('[data-soon]').forEach(s => { s.textContent = t('soon'); });
-    $$('[data-pres-tag]').forEach(s => { s.textContent = t('pres_tag'); });
+    $$('[data-pres-tag]').forEach(s => { s.textContent = t(s.dataset.presTag); });
     $('#lbPrev').setAttribute('aria-label', t('prev'));
     $('#lbNext').setAttribute('aria-label', t('next'));
     $('#lbClose').setAttribute('aria-label', t('close'));

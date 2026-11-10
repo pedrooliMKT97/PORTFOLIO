@@ -33,12 +33,13 @@ window.PC = (function () {
 
   /* com url: o card abre a apresentação da marca em vez da imagem */
   const ids = [
-    ['identidade-muving.jpg', 'Muving — Agência de Marketing', 'identidades/muving/'],
+    ['identidade-cartazon.jpg', 'CartazON — Tecnologia para o varejo', 'identidades/cartazon/', 'tag_manual'],
+    ['identidade-muving.jpg', 'Muving — Agência de Marketing', 'identidades/muving/', 'pres_tag'],
     ['identidade-barrankos.webp', 'Barranko’s'],
     ['identidade-flor.webp', 'Flor de Brasa'],
     ['identidade-victor.webp', 'Espetinhos do Victor'],
     ['identidade-barans.webp', 'Baran’s']
-  ].map(([f, t, url]) => ({ type: 'id', src: A + f, title: t, url: url || null, w: 1200, h: 900 }));
+  ].map(([f, t, url, tag]) => ({ type: 'id', src: A + f, title: t, url: url || null, tag: tag || null, w: 1200, h: 900 }));
 
   /* src = topo do site; long = página inteira (rola no hover e no visualizador) */
   const site = (key, title, kind, url, longH) => ({
@@ -97,7 +98,7 @@ window.PC = (function () {
       sec_posts: 'posts', sec_videos: 'vídeos', sec_sites: 'sites & LPs', sec_ids: 'identidades',
       d_posts: 'Cada nicho, uma nova ideia.', d_videos: 'Histórias em movimento.', d_sites: 'Presença além do feed.', d_ids: 'Marcas com personalidade.',
       visit: 'visitar site ↗', see_preview: 'ver prévia', soon: 'em breve no ar',
-      cur_view: 'ver', cur_play: 'play', cur_site: 'prévia', cur_chat: 'chamar', cur_pres: 'apresentação', see_pres: 'ver apresentação ↗', pres_tag: 'apresentação interativa',
+      cur_view: 'ver', cur_play: 'play', cur_site: 'prévia', cur_chat: 'chamar', cur_pres: 'apresentação', see_pres: 'ver apresentação ↗', pres_tag: 'apresentação interativa', tag_manual: 'manual da marca',
       mgmt: ['estratégia', 'tráfego pago', 'IA aplicada', 'dashboards'],
       cta: 'vamos fazer acontecer?', cta_btn: 'chamar no WhatsApp', cta_ig: 'ver no Instagram',
       dragon_hint: 'o dragão segue o seu cursor',
@@ -134,7 +135,7 @@ window.PC = (function () {
       sec_posts: 'posts', sec_videos: 'videos', sec_sites: 'websites', sec_ids: 'identities',
       d_posts: 'Every niche, a new idea.', d_videos: 'Stories in motion.', d_sites: 'Presence beyond the feed.', d_ids: 'Brands with personality.',
       visit: 'visit site ↗', see_preview: 'see preview', soon: 'launching soon',
-      cur_view: 'view', cur_play: 'play', cur_site: 'preview', cur_chat: 'chat', cur_pres: 'presentation', see_pres: 'see presentation ↗', pres_tag: 'interactive presentation',
+      cur_view: 'view', cur_play: 'play', cur_site: 'preview', cur_chat: 'chat', cur_pres: 'presentation', see_pres: 'see presentation ↗', pres_tag: 'interactive presentation', tag_manual: 'brand manual',
       mgmt: ['strategy', 'paid traffic', 'applied AI', 'dashboards'],
       cta: 'let’s make it happen?', cta_btn: 'message on WhatsApp', cta_ig: 'see on Instagram',
       dragon_hint: 'the dragon follows your cursor',
@@ -164,7 +165,7 @@ window.PC = (function () {
       desc: 'Sites institucionais e landing pages criados pelo peagá criativo: Clínica Nosso Lar, Lucas Oliveira Psicólogo, Casa do Sol Imobiliária e Supermercado Ponto Novo.' },
     identidades: { sel: '#identidades', name: 'Identidade visual',
       title: 'Identidade visual e criação de logotipo | peagá criativo',
-      desc: 'Identidades visuais e logotipos criados pelo peagá criativo para Muving (com apresentação interativa da marca), Barranko’s, Flor de Brasa, Espetinhos do Victor e Baran’s.' },
+      desc: 'Identidades visuais e logotipos criados pelo peagá criativo para CartazON (manual da marca completo), Muving (apresentação interativa), Barranko’s, Flor de Brasa, Espetinhos do Victor e Baran’s.' },
     sobre: { sel: '#sobre', name: 'Sobre',
       title: 'Sobre o Pedro, designer gráfico e estrategista criativo | peagá criativo',
       desc: 'Pedro é designer gráfico e estrategista criativo há mais de 6 anos, à frente do peagá criativo e do Cravo creative studio. Conheça os serviços de design, vídeo, sites e gestão.' },

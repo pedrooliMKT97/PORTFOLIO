@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.pdrolidesigner.com.br/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>1.0</priority>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/og-peaga.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/pedro.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/trabalhos/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
 
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/posts/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/pizza-combo.webp</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/lanterns.webp</image:loc></image:image>
@@ -45,7 +45,7 @@
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/videos/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/yt-gYFRNGktTyQ-max.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/yt-_k_vZQakGjU-max.jpg</image:loc></image:image>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/sites/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/preview-nosso-lar.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/preview-lucas.jpg</image:loc></image:image>
@@ -65,8 +65,9 @@
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/identidades/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.7</priority>
+    <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/identidade-cartazon.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/identidade-muving.jpg</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/identidade-barrankos.webp</image:loc></image:image>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/identidade-flor.webp</image:loc></image:image>
@@ -75,14 +76,24 @@
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/sobre/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.7</priority>
     <image:image><image:loc>https://www.pdrolidesigner.com.br/assets/pedro.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.pdrolidesigner.com.br/contato/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.7</priority>
 
+  </url>
+  <url>
+    <loc>https://www.pdrolidesigner.com.br/identidades/cartazon/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.pdrolidesigner.com.br/identidades/muving/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
